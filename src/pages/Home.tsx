@@ -1,8 +1,9 @@
 export default function Home() {
   return (
-    <main style={{ padding: 24 }}>
-      <h1>Home</h1>
-      <p>Hero section goes here.</p>
+    <main className="min-h-screen bg-black text-white p-8">
+      <h1 className="text-4xl font-bold tracking-tight">
+        Tailwind is working
+      </h1>
     </main>
   );
 }
