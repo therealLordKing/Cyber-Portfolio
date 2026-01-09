@@ -34,8 +34,13 @@ export default function Home() {
               cybersecurity freelancer, content creator and web designer 
             </h1>
             <p className="text-base leading-relaxed text-zinc-600 sm:text-lg">
-             I create practical content on cybersecurity, home labs, and electronics. I am focused on teaching real skills,
-             showcasing projects, and documenting the learning process from the ground up. 
+             I create practical content on cybersecurity and electronics. I am focused on teaching real skills,
+             showcasing projects, and documenting the learning process from the ground up.
+             </p>
+             <p className="text-base leading-relaxed text-zinc-600 sm:text-lg">
+
+             I offer web design and website security testing services. If you currently have a website I will provide a free review of the 
+             layout and security.  
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-4">
