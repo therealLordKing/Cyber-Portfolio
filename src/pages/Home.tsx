@@ -43,14 +43,11 @@ export default function Home() {
               cybersecurity freelancer, content creator and web designer 
             </h1>
             <p className="text-base leading-relaxed text-slate-200 sm:text-lg">
-             I create practical content on cybersecurity and electronics. I am focused on teaching real skills,
-             showcasing projects, and documenting the learning process from the ground up.
+             I create practical content focused on cybersecurity and security-oriented electronics. My work documents how real systems are built, where they fail, and how to secure them — from web applications to hardware-assisted security projects.
              </p>
-             <p className="text-base leading-relaxed text-slate-200 sm:text-lg">
-
-             I offer web design and website security testing services. If you currently have a website I will provide a free review of the 
-             layout and security.  
-            </p>
+             <p className="text-base leading-relaxed text-slate-200 sm:text-lg"> 
+             I offer web design and website security review services, with a focus on clean architecture, basic hardening, and common misconfiguration risks. If you already have a website, I provide a free initial review covering layout clarity and security fundamentals. 
+             </p>
           </div>
           <div className="flex flex-wrap items-center gap-4">
             <Link
