@@ -26,7 +26,7 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
             often136
           </NavLink>
           <span className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
-            Security studio
+            Cyber solutions studio
           </span>
         </div>
 

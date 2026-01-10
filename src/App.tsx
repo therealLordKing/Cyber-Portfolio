@@ -11,10 +11,10 @@ import WebsiteDesigns from "./pages/WebsiteDesigns";
 export default function App() {
   const [theme, setTheme] = useState<"dark" | "light">(() => {
     if (typeof window === "undefined") {
-      return "dark";
+      return "light";
     }
     const saved = window.localStorage.getItem("theme");
-    return saved === "light" ? "light" : "dark";
+    return saved === "dark" ? "dark" : "light";
   });
 
   useEffect(() => {

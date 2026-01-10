@@ -7,7 +7,7 @@ export default function CyberPortfolio() {
       description="Dedicated space for cybersecurity-specific projects, tools, and custom scripts."
       eyebrow="Cyber Projects"
       sectionTitle="Tools and builds"
-      badge="Updated as projects ship"
+      badge="Coming soon"
       items={[
         {
           title: "Custom scripts",

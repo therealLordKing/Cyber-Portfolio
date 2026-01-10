@@ -41,7 +41,7 @@ export default function Home() {
               Security-led digital studio
             </p>
             <div className="space-y-4">
-              <h1 className="text-4xl font-semibold tracking-tight text-[color:var(--text-strong)] sm:text-5xl">
+              <h1 className="font-orbitron text-4xl font-semibold tracking-tight text-[color:var(--text-strong)] sm:text-5xl">
                 Cybersecurity creator crafting resilient experiences
               </h1>
               <p className="text-base leading-relaxed text-[color:var(--text)] sm:text-lg">
@@ -70,41 +70,120 @@ export default function Home() {
               >
                 Start a project
               </Link>
+              <Link
+                to="/contact"
+                className="rounded-full border border-[color:var(--border)] px-6 py-2.5 text-sm font-semibold text-[color:var(--text)] transition hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--bg)]"
+              >
+                Custom solutions
+              </Link>
             </div>
-            <div className="flex flex-wrap gap-6 pt-2 text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--text-muted)]">
-              <span>Design systems</span>
-              <span>Security reviews</span>
-              <span>Threat-aware content</span>
+            <div className="flex flex-wrap gap-6 pt-2 text-sm font-semibold uppercase tracking-[0.32em] text-[color:var(--text-strong)]">
+              <span>Average review window</span>
+              <span>48 hrs</span>
             </div>
           </div>
           <div className="space-y-6">
             <div className="frosted-card rounded-3xl p-6">
-              <p className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
-                What you get
-              </p>
-              <h2 className="mt-3 text-xl font-semibold text-[color:var(--text-strong)]">
-                Engagements built for clarity and speed
+              <h2 className="font-orbitron text-2xl font-bold tracking-[0.14em] text-[color:var(--text-strong)] sm:text-3xl">
+                Need a secure website?
               </h2>
-              <ul className="mt-4 space-y-3 text-sm text-[color:var(--text-soft)]">
-                <li>Security-first layouts with modern visual polish.</li>
-                <li>Threat-aware walkthroughs and incident-ready notes.</li>
-                <li>Clear architecture documentation for handoff.</li>
-              </ul>
+              <p className="mt-4 font-orbitron text-base tracking-[0.08em] text-[color:var(--text-soft)] sm:text-lg">
+                <Link
+                  to="/contact"
+                  className="text-[color:var(--accent)] underline decoration-transparent underline-offset-4 transition hover:decoration-[color:var(--accent)]"
+                >
+                  Contact
+                </Link>{" "}
+                me with your preferred website design, or{" "}
+                <Link
+                  to="/contact#design-input"
+                  className="text-[color:var(--accent)] underline decoration-transparent underline-offset-4 transition hover:decoration-[color:var(--accent)]"
+                >
+                  design your own
+                </Link>
+                .
+              </p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               {[
-                { label: "Average review window", value: "48 hrs" },
-                { label: "Case studies", value: "12+" },
-                { label: "Security checklists", value: "25+" },
-                { label: "Global collaborators", value: "6" },
+                {
+                  label: "Security tools",
+                  color: "text-[color:var(--accent)]",
+                  icon: (
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="h-12 w-12"
+                      aria-hidden="true"
+                      fill="currentColor"
+                    >
+                      <path d="M5 4.5h14a2.5 2.5 0 0 1 2.5 2.5v7A2.5 2.5 0 0 1 19 16.5H5A2.5 2.5 0 0 1 2.5 14V7A2.5 2.5 0 0 1 5 4.5Z" />
+                      <path d="M8 18.5h8a1 1 0 0 1 1 1v.5H7v-.5a1 1 0 0 1 1-1Z" />
+                    </svg>
+                  ),
+                },
+                {
+                  label: "Case studies",
+                  color: "text-[color:var(--accent-strong)]",
+                  icon: (
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="h-12 w-12"
+                      aria-hidden="true"
+                      fill="currentColor"
+                    >
+                      <path d="M7 3.5h7.5L20.5 9v9.5a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-13a2 2 0 0 1 2-2Z" />
+                      <path d="M14.5 3.5V9H20" />
+                      <rect x="8" y="11" width="8.5" height="1.6" rx=".8" />
+                      <rect x="8" y="14.2" width="6.5" height="1.6" rx=".8" />
+                      <path d="M8 18h7.5" />
+                    </svg>
+                  ),
+                },
+                {
+                  label: "Security checklists",
+                  color: "text-[#34d399]",
+                  icon: (
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="h-12 w-12"
+                      aria-hidden="true"
+                      fill="currentColor"
+                    >
+                      <path d="M6.5 4.5h11a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2v-13a2 2 0 0 1 2-2Z" />
+                      <path d="m7.5 9.2 1.2 1.2 2.2-2.2" fill="#0b1220" />
+                      <rect x="11.2" y="9" width="6" height="1.6" rx=".8" fill="#0b1220" />
+                      <rect x="7.5" y="13" width="9.7" height="1.6" rx=".8" fill="#0b1220" />
+                      <rect x="7.5" y="16.5" width="9.7" height="1.6" rx=".8" fill="#0b1220" />
+                    </svg>
+                  ),
+                },
+                {
+                  label: "Custom scripts",
+                  color: "text-[#f59e0b]",
+                  icon: (
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="h-12 w-12"
+                      aria-hidden="true"
+                      fill="currentColor"
+                    >
+                      <path d="M5 5.5h14a2.5 2.5 0 0 1 2.5 2.5v8A2.5 2.5 0 0 1 19 18.5H5A2.5 2.5 0 0 1 2.5 16V8A2.5 2.5 0 0 1 5 5.5Z" />
+                      <path d="M7.3 10.5 10 13.2l-2.7 2.7" stroke="#0b1220" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <rect x="12.5" y="15" width="4.5" height="1.8" rx=".9" fill="#0b1220" />
+                    </svg>
+                  ),
+                },
               ].map((stat) => (
-                <div key={stat.label} className="frosted-card rounded-2xl p-4">
-                  <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--text-muted)]">
+                <div
+                  key={stat.label}
+                  className="frosted-card flex min-h-[160px] flex-col justify-between rounded-2xl p-4"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--text-strong)]">
                     {stat.label}
                   </p>
-                  <p className="mt-2 text-2xl font-semibold text-[color:var(--text-strong)]">
-                    {stat.value}
-                  </p>
+                  <div className={`mt-4 flex justify-center ${stat.color}`}>
+                    {stat.icon}
+                  </div>
                 </div>
               ))}
             </div>
@@ -118,7 +197,7 @@ export default function Home() {
             <p className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
               Featured work
             </p>
-            <h2 className="text-2xl font-semibold tracking-tight text-[color:var(--text-strong)] sm:text-3xl">
+            <h2 className="font-orbitron text-2xl font-bold tracking-tight text-[color:var(--text-strong)] sm:text-3xl">
               High-performance security engagements
             </h2>
           </div>
@@ -167,7 +246,7 @@ export default function Home() {
                 >
                   <div className="space-y-3">
                     <div className="flex flex-wrap items-start justify-between gap-3">
-                      <h3 className="text-xl font-semibold text-[color:var(--text-strong)]">
+                      <h3 className="font-orbitron text-xl font-bold text-[color:var(--text-strong)]">
                         {project.title}
                       </h3>
                     </div>
@@ -206,7 +285,7 @@ export default function Home() {
             <p className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
               Next steps
             </p>
-            <h2 className="text-2xl font-semibold tracking-tight text-[color:var(--text-strong)] sm:text-3xl">
+            <h2 className="font-orbitron text-2xl font-semibold tracking-tight text-[color:var(--text-strong)] sm:text-3xl">
               Ready for the full portfolio deep dive?
             </h2>
             <p className="text-sm text-[color:var(--text-soft)]">
