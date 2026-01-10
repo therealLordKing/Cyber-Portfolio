@@ -33,87 +33,150 @@ export default function Home() {
 
   return (
     <div className="space-y-16">
-      <section className="relative overflow-hidden rounded-3xl border border-slate-800 bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900 px-6 py-12 sm:px-10">
-        <div className="max-w-2xl space-y-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
-           Often136 
-          </p>
-          <div className="space-y-4">
-            <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-              cybersecurity freelancer, content creator and web designer 
-            </h1>
-            <p className="text-base leading-relaxed text-slate-200 sm:text-lg">
-             I create practical content focused on cybersecurity and security-oriented electronics. My work documents how real systems are built, where they fail, and how to secure them — from web applications to hardware-assisted security projects.
-             </p>
-             <p className="text-base leading-relaxed text-slate-200 sm:text-lg"> 
-             I offer web design and website security review services, with a focus on clean architecture, basic hardening, and common misconfiguration risks. If you already have a website, I provide a free initial review covering layout clarity and security fundamentals. 
-             </p>
+      <section className="frosted-panel relative overflow-hidden rounded-[32px] px-6 py-12 sm:px-10 lg:px-12">
+        <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[color:var(--accent)] opacity-20 blur-[120px]" />
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:items-center">
+          <div className="space-y-6">
+            <p className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
+              Security-led digital studio
+            </p>
+            <div className="space-y-4">
+              <h1 className="text-4xl font-semibold tracking-tight text-[color:var(--text-strong)] sm:text-5xl">
+                Cybersecurity creator crafting resilient experiences
+              </h1>
+              <p className="text-base leading-relaxed text-[color:var(--text)] sm:text-lg">
+                I build practical cybersecurity content, document real systems,
+                and design sites that look sharp while respecting security
+                fundamentals. The work spans web applications, electronics, and
+                tooling that helps teams move faster without losing visibility.
+              </p>
+              <p className="text-base leading-relaxed text-[color:var(--text)] sm:text-lg">
+                I also offer website design and security reviews with a focus on
+                clean architecture, hardening checklists, and clear risk
+                communication. Every engagement starts with a free, rapid review
+                of layout clarity and baseline security posture.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-4">
+              <Link
+                to="/projects"
+                className="rounded-full bg-[color:var(--accent)] px-6 py-2.5 text-sm font-semibold text-[color:var(--text-strong)] transition hover:bg-[color:var(--accent-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--bg)]"
+              >
+                View Projects
+              </Link>
+              <Link
+                to="/contact"
+                className="rounded-full border border-[color:var(--border)] px-6 py-2.5 text-sm font-semibold text-[color:var(--text)] transition hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--bg)]"
+              >
+                Start a project
+              </Link>
+            </div>
+            <div className="flex flex-wrap gap-6 pt-2 text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--text-muted)]">
+              <span>Design systems</span>
+              <span>Security reviews</span>
+              <span>Threat-aware content</span>
+            </div>
           </div>
-          <div className="flex flex-wrap items-center gap-4">
-            <Link
-              to="/projects"
-              className="rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-            >
-              View Projects
-            </Link>
-            <Link
-              to="/contact"
-              className="rounded-full border border-slate-700 px-5 py-2.5 text-sm font-semibold text-slate-200 transition hover:border-sky-400 hover:text-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-            >
-              Contact
-            </Link>
+          <div className="space-y-6">
+            <div className="frosted-card rounded-3xl p-6">
+              <p className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
+                What you get
+              </p>
+              <h2 className="mt-3 text-xl font-semibold text-[color:var(--text-strong)]">
+                Engagements built for clarity and speed
+              </h2>
+              <ul className="mt-4 space-y-3 text-sm text-[color:var(--text-soft)]">
+                <li>Security-first layouts with modern visual polish.</li>
+                <li>Threat-aware walkthroughs and incident-ready notes.</li>
+                <li>Clear architecture documentation for handoff.</li>
+              </ul>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {[
+                { label: "Average review window", value: "48 hrs" },
+                { label: "Case studies", value: "12+" },
+                { label: "Security checklists", value: "25+" },
+                { label: "Global collaborators", value: "6" },
+              ].map((stat) => (
+                <div key={stat.label} className="frosted-card rounded-2xl p-4">
+                  <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--text-muted)]">
+                    {stat.label}
+                  </p>
+                  <p className="mt-2 text-2xl font-semibold text-[color:var(--text-strong)]">
+                    {stat.value}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="space-y-6">
+      <section className="space-y-8">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div className="space-y-2">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
-              Featured Projects
+            <p className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
+              Featured work
             </p>
-            <h2 className="text-2xl font-semibold tracking-tight text-white">
-              High-impact security work
+            <h2 className="text-2xl font-semibold tracking-tight text-[color:var(--text-strong)] sm:text-3xl">
+              High-performance security engagements
             </h2>
           </div>
           <Link
             to="/projects"
-            className="text-sm font-semibold text-slate-200 transition hover:text-sky-300"
+            className="rounded-full border border-[color:var(--border)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--text-muted)] transition hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]"
           >
             View all
           </Link>
         </div>
 
-        <ul className="grid gap-6 md:grid-cols-3">
-          {featuredProjects.map((project) => {
+        <ul className="grid gap-6 lg:grid-cols-3">
+          {(expandedProject
+            ? featuredProjects.filter(
+                (project) => project.title === expandedProject
+              )
+            : featuredProjects
+          ).map((project) => {
             const isExpanded = expandedProject === project.title;
 
             return (
-              <li key={project.title}>
+              <li
+                key={project.title}
+                className={`relative ${isExpanded ? "lg:col-span-3" : ""}`}
+              >
+                {isExpanded ? (
+                  <button
+                    type="button"
+                    onClick={() => setExpandedProject(null)}
+                    className="absolute right-6 top-6 z-10 rounded-full border border-[color:var(--border)] bg-[color:var(--surface-1)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--text-muted)] transition hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]"
+                  >
+                    Back
+                  </button>
+                ) : null}
                 <button
                   type="button"
                   onClick={() =>
                     setExpandedProject(isExpanded ? null : project.title)
                   }
                   aria-expanded={isExpanded}
-                  className={`group flex h-full w-full flex-col justify-between rounded-2xl border p-6 text-left transition-all duration-300 ${
+                  className={`group frosted-card interactive-card flex h-full w-full flex-col justify-between rounded-3xl p-6 text-left transition-all duration-300 ${
                     isExpanded
-                      ? "border-sky-500 bg-slate-800 shadow-lg shadow-slate-900/60"
-                      : "border-slate-800 bg-slate-900 hover:border-slate-600 hover:bg-slate-800 hover:shadow-sm hover:shadow-slate-900/50"
+                      ? "is-active is-expanded no-hover-glow"
+                      : "hover:border-[color:var(--border-strong)] hover:bg-[color:var(--surface-2)]"
                   }`}
                 >
                   <div className="space-y-3">
-                    <h3 className="text-lg font-semibold text-white">
-                      {project.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-slate-300">
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <h3 className="text-xl font-semibold text-[color:var(--text-strong)]">
+                        {project.title}
+                      </h3>
+                    </div>
+                    <p className="text-sm leading-relaxed text-[color:var(--text-soft)]">
                       {project.summary}
                     </p>
                     <p
-                      className={`text-xs text-slate-400 transition-all duration-300 ${
-                        isExpanded
-                          ? "mt-3 max-h-[320px] opacity-100"
-                          : "max-h-0 opacity-0"
+                      className={`expandable-details text-xs text-[color:var(--text-muted)] ${
+                        isExpanded ? "details-open mt-3" : ""
                       } overflow-hidden`}
                     >
                       {project.details}
@@ -123,7 +186,7 @@ export default function Home() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-slate-700 px-3 py-1 text-xs font-semibold text-slate-200"
+                        className="rounded-full border border-[color:var(--border)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-[color:var(--text-muted)]"
                       >
                         {tag}
                       </span>
@@ -136,28 +199,34 @@ export default function Home() {
         </ul>
       </section>
 
-      <section className="flex flex-col gap-6 rounded-3xl border border-slate-800 bg-slate-900 px-6 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-10">
-        <div className="space-y-2">
-          <h2 className="text-2xl font-semibold tracking-tight text-white">
-            Ready to explore the full portfolio?
-          </h2>
-          <p className="text-sm text-slate-300">
-            Browse detailed case studies or reach out to collaborate.
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-4">
-          <Link
-            to="/projects"
-            className="rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-          >
-            View Projects
-          </Link>
-          <Link
-            to="/contact"
-            className="rounded-full border border-slate-700 px-5 py-2.5 text-sm font-semibold text-slate-200 transition hover:border-sky-400 hover:text-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-          >
-            Contact
-          </Link>
+      <section className="frosted-panel relative overflow-hidden rounded-[32px] px-6 py-10 sm:px-10">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_right,_var(--accent-soft),_transparent_55%)]" />
+        <div className="relative flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="space-y-2">
+            <p className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
+              Next steps
+            </p>
+            <h2 className="text-2xl font-semibold tracking-tight text-[color:var(--text-strong)] sm:text-3xl">
+              Ready for the full portfolio deep dive?
+            </h2>
+            <p className="text-sm text-[color:var(--text-soft)]">
+              Review the case studies or start a security-led design engagement.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-4">
+            <Link
+              to="/projects"
+              className="rounded-full bg-[color:var(--accent)] px-6 py-2.5 text-sm font-semibold text-[color:var(--text-strong)] transition hover:bg-[color:var(--accent-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--bg)]"
+            >
+              Explore case studies
+            </Link>
+            <Link
+              to="/contact"
+              className="rounded-full border border-[color:var(--border)] px-6 py-2.5 text-sm font-semibold text-[color:var(--text)] transition hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--bg)]"
+            >
+              Book a review
+            </Link>
+          </div>
         </div>
       </section>
     </div>
