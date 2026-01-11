@@ -112,7 +112,7 @@ export default function Contact() {
           </div>
           <form
             className="grid gap-5"
-            action="mailto:often@pjcyber.com"
+            action="mailto:often136@pjcyber.com"
             method="post"
             encType="text/plain"
           >
