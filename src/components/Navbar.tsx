@@ -15,8 +15,8 @@ type NavbarProps = {
 export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
   return (
     <header className="frosted-panel sticky top-0 z-50">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-4 sm:px-8 lg:px-12">
-        <div className="flex flex-col gap-1">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-5 py-4 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left sm:px-8 lg:px-12">
+        <div className="flex flex-col items-center gap-1 sm:items-start">
           <NavLink
             to="/"
             className="font-orbitron brand-glow text-2xl font-semibold tracking-[0.18em] text-[color:var(--text-strong)] sm:text-3xl"
@@ -30,8 +30,11 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
           </span>
         </div>
 
-        <nav aria-label="Primary" className="flex flex-wrap items-center gap-3">
-          <ul className="flex flex-wrap items-center gap-2 rounded-full border border-[color:var(--border)] bg-[color:var(--surface-2)] px-3 py-2 shadow-[0_12px_40px_-32px_var(--shadow)]">
+        <nav
+          aria-label="Primary"
+          className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row"
+        >
+          <ul className="flex w-full flex-wrap items-center justify-center gap-2 rounded-full border border-[color:var(--border)] bg-[color:var(--surface-2)] px-3 py-2 shadow-[0_12px_40px_-32px_var(--shadow)] sm:w-auto">
             {[
               { to: "/", label: "Home" },
               { to: "/cyber-portfolio", label: "Cyber Portfolio" },

@@ -36,7 +36,7 @@ export default function SectionGrid({
   return (
     <section className="space-y-10">
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:items-end">
-        <div className="space-y-4">
+        <div className="space-y-4 text-center sm:text-left">
           <p className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
             {eyebrow}
           </p>
@@ -48,7 +48,7 @@ export default function SectionGrid({
           </p>
         </div>
         {showFocusCard ? (
-          <div className="frosted-panel rounded-3xl p-6">
+          <div className="frosted-panel rounded-3xl p-6 text-center sm:text-left">
             <p className="text-sm text-[color:var(--text-soft)]">Focus area</p>
             <h2 className="mt-2 font-orbitron text-xl font-semibold text-[color:var(--text-strong)]">
               {sectionTitle}
@@ -61,7 +61,7 @@ export default function SectionGrid({
       </div>
 
       <div className="frosted-panel rounded-[32px] p-6 sm:p-8">
-        <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
           <div>
             <p className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
               {eyebrow}

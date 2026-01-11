@@ -36,7 +36,7 @@ export default function Home() {
       <section className="frosted-panel relative overflow-hidden rounded-[32px] px-6 py-12 sm:px-10 lg:px-12">
         <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[color:var(--accent)] opacity-20 blur-[120px]" />
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:items-center">
-          <div className="space-y-6">
+          <div className="space-y-6 text-center sm:text-left">
             <p className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
               Security-led digital studio
             </p>
@@ -57,7 +57,7 @@ export default function Home() {
                 of layout clarity and baseline security posture.
               </p>
             </div>
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:justify-start">
               <Link
                 to="/projects"
                 className="rounded-full bg-[color:var(--accent)] px-6 py-2.5 text-sm font-semibold text-[color:var(--text-strong)] transition hover:bg-[color:var(--accent-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--bg)]"
@@ -77,13 +77,13 @@ export default function Home() {
                 Custom solutions
               </Link>
             </div>
-            <div className="flex flex-wrap gap-6 pt-2 text-sm font-semibold uppercase tracking-[0.32em] text-[color:var(--text-strong)]">
+            <div className="flex flex-wrap justify-center gap-6 pt-2 text-sm font-semibold uppercase tracking-[0.32em] text-[color:var(--text-strong)] sm:justify-start">
               <span>Average review window</span>
               <span>48 hrs</span>
             </div>
           </div>
           <div className="space-y-6">
-            <div className="frosted-card rounded-3xl p-6">
+            <div className="frosted-card rounded-3xl p-6 text-center sm:text-left">
               <h2 className="font-orbitron text-2xl font-bold tracking-[0.14em] text-[color:var(--text-strong)] sm:text-3xl">
                 Need a secure website?
               </h2>
@@ -192,7 +192,7 @@ export default function Home() {
       </section>
 
       <section className="space-y-8">
-        <div className="flex flex-wrap items-end justify-between gap-4">
+        <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:items-end sm:justify-between sm:text-left">
           <div className="space-y-2">
             <p className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
               Featured work
@@ -280,7 +280,7 @@ export default function Home() {
 
       <section className="frosted-panel relative overflow-hidden rounded-[32px] px-6 py-10 sm:px-10">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_right,_var(--accent-soft),_transparent_55%)]" />
-        <div className="relative flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="relative flex flex-col items-center gap-6 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
           <div className="space-y-2">
             <p className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
               Next steps
@@ -292,7 +292,7 @@ export default function Home() {
               Review the case studies or start a security-led design engagement.
             </p>
           </div>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap justify-center gap-4 sm:justify-start">
             <Link
               to="/projects"
               className="rounded-full bg-[color:var(--accent)] px-6 py-2.5 text-sm font-semibold text-[color:var(--text-strong)] transition hover:bg-[color:var(--accent-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--bg)]"
