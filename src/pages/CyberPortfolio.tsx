@@ -3,9 +3,9 @@ import SectionGrid from "../components/SectionGrid";
 export default function CyberPortfolio() {
   return (
     <SectionGrid
-      title="Cyber Portfolio"
+      title="Cyber Solutions"
       description="Dedicated space for cybersecurity-specific projects, tools, and custom scripts."
-      eyebrow="Cyber Projects"
+      eyebrow="Cyber Solutions"
       sectionTitle="Tools and builds"
       badge="Coming soon"
       items={[

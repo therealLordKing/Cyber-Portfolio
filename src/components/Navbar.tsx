@@ -37,7 +37,7 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
           <ul className="flex w-full flex-wrap items-center justify-center gap-2 rounded-full border border-[color:var(--border)] bg-[color:var(--surface-2)] px-3 py-2 shadow-[0_12px_40px_-32px_var(--shadow)] sm:w-auto">
             {[
               { to: "/", label: "Home" },
-              { to: "/cyber-portfolio", label: "Cyber Portfolio" },
+              { to: "/cyber-portfolio", label: "Cyber Solutions" },
               { to: "/projects", label: "Projects" },
               { to: "/website-designs", label: "Website Designs" },
               { to: "/about", label: "About" },

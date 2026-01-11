@@ -1,5 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import securityToolsImage from "../assets/images/home/security-tools.jpeg";
+import securityToolsLightImage from "../assets/images/home/security-tools-light.jpeg";
+import caseStudiesImage from "../assets/images/home/case-studies.jpeg";
+import caseStudiesLightImage from "../assets/images/home/case-studies-light.jpeg";
+import securityChecklistsImage from "../assets/images/home/security-checklists.jpeg";
+import securityChecklistsLightImage from "../assets/images/home/security-checklists-light.jpeg";
+import customScriptsImage from "../assets/images/home/custom-scripts.jpeg";
+import customScriptsLightImage from "../assets/images/home/custom-scripts-light.jpeg";
 
 const featuredProjects = [
   {
@@ -108,82 +116,44 @@ export default function Home() {
               {[
                 {
                   label: "Security tools",
-                  color: "text-[color:var(--accent)]",
-                  icon: (
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-12 w-12"
-                      aria-hidden="true"
-                      fill="currentColor"
-                    >
-                      <path d="M5 4.5h14a2.5 2.5 0 0 1 2.5 2.5v7A2.5 2.5 0 0 1 19 16.5H5A2.5 2.5 0 0 1 2.5 14V7A2.5 2.5 0 0 1 5 4.5Z" />
-                      <path d="M8 18.5h8a1 1 0 0 1 1 1v.5H7v-.5a1 1 0 0 1 1-1Z" />
-                    </svg>
-                  ),
+                  image: securityToolsImage,
+                  lightImage: securityToolsLightImage,
                 },
                 {
                   label: "Case studies",
-                  color: "text-[color:var(--accent-strong)]",
-                  icon: (
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-12 w-12"
-                      aria-hidden="true"
-                      fill="currentColor"
-                    >
-                      <path d="M7 3.5h7.5L20.5 9v9.5a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-13a2 2 0 0 1 2-2Z" />
-                      <path d="M14.5 3.5V9H20" />
-                      <rect x="8" y="11" width="8.5" height="1.6" rx=".8" />
-                      <rect x="8" y="14.2" width="6.5" height="1.6" rx=".8" />
-                      <path d="M8 18h7.5" />
-                    </svg>
-                  ),
+                  image: caseStudiesImage,
+                  lightImage: caseStudiesLightImage,
                 },
                 {
                   label: "Security checklists",
-                  color: "text-[#34d399]",
-                  icon: (
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-12 w-12"
-                      aria-hidden="true"
-                      fill="currentColor"
-                    >
-                      <path d="M6.5 4.5h11a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2v-13a2 2 0 0 1 2-2Z" />
-                      <path d="m7.5 9.2 1.2 1.2 2.2-2.2" fill="#0b1220" />
-                      <rect x="11.2" y="9" width="6" height="1.6" rx=".8" fill="#0b1220" />
-                      <rect x="7.5" y="13" width="9.7" height="1.6" rx=".8" fill="#0b1220" />
-                      <rect x="7.5" y="16.5" width="9.7" height="1.6" rx=".8" fill="#0b1220" />
-                    </svg>
-                  ),
+                  image: securityChecklistsImage,
+                  lightImage: securityChecklistsLightImage,
                 },
                 {
                   label: "Custom scripts",
-                  color: "text-[#f59e0b]",
-                  icon: (
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-12 w-12"
-                      aria-hidden="true"
-                      fill="currentColor"
-                    >
-                      <path d="M5 5.5h14a2.5 2.5 0 0 1 2.5 2.5v8A2.5 2.5 0 0 1 19 18.5H5A2.5 2.5 0 0 1 2.5 16V8A2.5 2.5 0 0 1 5 5.5Z" />
-                      <path d="M7.3 10.5 10 13.2l-2.7 2.7" stroke="#0b1220" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      <rect x="12.5" y="15" width="4.5" height="1.8" rx=".9" fill="#0b1220" />
-                    </svg>
-                  ),
+                  image: customScriptsImage,
+                  lightImage: customScriptsLightImage,
                 },
               ].map((stat) => (
                 <div
                   key={stat.label}
-                  className="frosted-card flex min-h-[160px] flex-col justify-between rounded-2xl p-4"
+                  className="frosted-card flex min-h-[160px] flex-col items-center justify-between rounded-2xl p-4 text-center"
                 >
                   <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--text-strong)]">
                     {stat.label}
                   </p>
-                  <div className={`mt-4 flex justify-center ${stat.color}`}>
-                    {stat.icon}
-                  </div>
+                  <img
+                    src={stat.image}
+                    alt={`${stat.label} illustration`}
+                    className="home-card-image home-card-image--dark mt-4 h-20 w-20 rounded-2xl object-contain sm:h-24 sm:w-24"
+                    loading="lazy"
+                  />
+                  <img
+                    src={stat.lightImage}
+                    alt={`${stat.label} illustration`}
+                    className="home-card-image home-card-image--light mt-4 h-20 w-20 rounded-2xl object-contain sm:h-24 sm:w-24"
+                    loading="lazy"
+                  />
                 </div>
               ))}
             </div>
