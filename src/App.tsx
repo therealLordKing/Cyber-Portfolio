@@ -7,6 +7,7 @@ import Projects from "./pages/Projects";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import WebsiteDesigns from "./pages/WebsiteDesigns";
+import Thanks from "./pages/Thanks";
 
 export default function App() {
   const [theme, setTheme] = useState<"dark" | "light">(() => {
@@ -42,6 +43,7 @@ export default function App() {
                 <Route path="/website-designs" element={<WebsiteDesigns />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/thanks" element={<Thanks />} />
               </Routes>
             </main>
           </div>
