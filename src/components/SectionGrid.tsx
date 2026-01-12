@@ -8,6 +8,7 @@ type SectionItem = {
   details?: string;
   tags?: string[];
   href?: string;
+  content?: ReactNode;
 };
 
 type SectionGridProps = {
@@ -81,14 +82,15 @@ export default function SectionGrid({
             isCompact ? "sm:grid-cols-2 lg:grid-cols-5" : "sm:grid-cols-2 lg:grid-cols-3"
           }`}
         >
-          {(expandedTitle
-            ? items.filter((item) => item.title === expandedTitle)
-            : items
+          {(isCompact || !expandedTitle
+            ? items
+            : items.filter((item) => item.title === expandedTitle)
           ).map((item) => {
             const isLink = Boolean(item.href);
-            const isExpanded = !isLink && expandedTitle === item.title;
+            const canExpand = !isCompact && !isLink;
+            const isExpanded = canExpand && expandedTitle === item.title;
             const detailsText = item.details ?? item.description;
-            const CardTag = isLink ? "a" : "button";
+            const CardTag = isLink ? "a" : canExpand ? "button" : "div";
 
             return (
               <div
@@ -107,15 +109,17 @@ export default function SectionGrid({
                 <CardTag
                   {...(isLink
                     ? { href: item.href }
-                    : {
-                        type: "button" as const,
-                        onClick: () =>
-                          setExpandedTitle(isExpanded ? null : item.title),
-                        "aria-expanded": isExpanded,
-                      })}
+                    : canExpand
+                      ? {
+                          type: "button" as const,
+                          onClick: () =>
+                            setExpandedTitle(isExpanded ? null : item.title),
+                          "aria-expanded": isExpanded,
+                        }
+                      : {})}
                   className={`frosted-card interactive-card flex w-full text-left text-sm text-[color:var(--text)] transition-all duration-300 ${
                     isCompact
-                      ? "min-h-[120px] flex-col justify-between rounded-2xl p-4"
+                      ? "min-h-[96px] flex-col justify-between rounded-2xl p-3"
                       : "min-h-[180px] flex-col justify-between rounded-3xl p-5"
                   } ${
                     isExpanded && !isCompact
@@ -129,7 +133,7 @@ export default function SectionGrid({
                         {item.icon ? (
                           <div
                             className={`flex items-center justify-center border border-[color:var(--border)] bg-[color:var(--surface-2)] text-[color:var(--text-strong)] ${
-                              isCompact ? "h-9 w-9 rounded-xl" : "h-10 w-10 rounded-2xl"
+                              isCompact ? "h-8 w-8 rounded-lg" : "h-10 w-10 rounded-2xl"
                             }`}
                           >
                             {item.icon}
@@ -137,19 +141,23 @@ export default function SectionGrid({
                         ) : null}
                         <div
                           className={`font-bold text-[color:var(--text-strong)] ${
-                            isCompact ? "text-base" : "text-lg"
+                            isCompact ? "text-sm" : "text-lg"
                           }`}
                         >
                           {item.title}
                         </div>
                       </div>
                     </div>
-                    {item.description ? (
+                    {item.content ? (
+                      <div className="text-sm text-[color:var(--text-soft)]">
+                        {item.content}
+                      </div>
+                    ) : item.description ? (
                       <p className="text-sm leading-relaxed text-[color:var(--text-soft)]">
                         {item.description}
                       </p>
                     ) : null}
-                    {!isCompact ? (
+                    {!isCompact && !item.content ? (
                       <p
                         className={`expandable-details text-xs text-[color:var(--text-muted)] ${
                           isExpanded ? "details-open mt-3" : ""

@@ -4,6 +4,8 @@ import SectionGrid from "../components/SectionGrid";
 export default function Contact() {
   const [hasWebsite, setHasWebsite] = useState<"yes" | "no">("no");
   const [serviceNeed, setServiceNeed] = useState<string>("");
+  const [emailCopied, setEmailCopied] = useState(false);
+  const emailAddress = "often136@pjcyber.com";
 
   const urlInputClass = hasWebsite === "yes"
     ? "w-full rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-1)] px-4 py-3 text-sm text-[color:var(--text-strong)] placeholder:text-[color:var(--text-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
@@ -11,6 +13,16 @@ export default function Contact() {
 
   const showMessageField =
     serviceNeed === "something-else" || serviceNeed === "not-sure";
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(emailAddress);
+      setEmailCopied(true);
+      window.setTimeout(() => setEmailCopied(false), 2000);
+    } catch {
+      window.prompt("Copy email:", emailAddress);
+    }
+  };
 
   return (
     <>
@@ -84,7 +96,28 @@ export default function Contact() {
           {
             title: "Email",
             description: "",
-            href: "mailto:often136@pjcyber.com",
+            content: (
+              <div className="space-y-3">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--text-muted)]">
+                  {emailAddress}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <a
+                    href={`mailto:${emailAddress}`}
+                    className="inline-flex items-center justify-center rounded-none border border-[color:var(--text-strong)] bg-[color:var(--text-strong)] px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[color:var(--bg)] transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
+                  >
+                    Email me
+                  </a>
+                  <button
+                    type="button"
+                    onClick={handleCopyEmail}
+                    className="inline-flex items-center justify-center rounded-none border border-[color:var(--border-strong)] px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[color:var(--text-strong)] transition hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
+                  >
+                    {emailCopied ? "Copied" : "Copy email"}
+                  </button>
+                </div>
+              </div>
+            ),
             icon: (
               <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
                 <path
