@@ -99,19 +99,21 @@ export default function Contact() {
             content: (
               <div className="space-y-3">
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--text-muted)]">
-                  {emailAddress}
+                  <span className="block max-w-full break-all text-[11px] tracking-[0.18em]">
+                    {emailAddress}
+                  </span>
                 </p>
                 <div className="flex flex-wrap gap-2">
                   <a
                     href={`mailto:${emailAddress}`}
-                    className="inline-flex items-center justify-center rounded-none border border-[color:var(--text-strong)] bg-[color:var(--text-strong)] px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[color:var(--bg)] transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
+                    className="inline-flex items-center justify-center rounded-none border border-[color:var(--accent)] bg-[color:var(--surface-2)] px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--accent)] transition hover:bg-[color:var(--surface-3)] hover:text-[color:var(--text-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
                   >
                     Email me
                   </a>
                   <button
                     type="button"
                     onClick={handleCopyEmail}
-                    className="inline-flex items-center justify-center rounded-none border border-[color:var(--border-strong)] px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[color:var(--text-strong)] transition hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
+                    className="inline-flex items-center justify-center rounded-none border border-[color:var(--border-strong)] bg-transparent px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--text-soft)] transition hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
                   >
                     {emailCopied ? "Copied" : "Copy email"}
                   </button>

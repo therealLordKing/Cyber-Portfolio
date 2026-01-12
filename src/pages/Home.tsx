@@ -137,7 +137,7 @@ export default function Home() {
               ].map((stat) => (
                 <div
                   key={stat.label}
-                  className="frosted-card flex min-h-[160px] flex-col items-center justify-between rounded-2xl p-4 text-center"
+                  className="frosted-card flex min-h-[160px] flex-col items-center justify-between rounded-xl p-4 text-center"
                 >
                   <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--text-strong)]">
                     {stat.label}
@@ -145,13 +145,13 @@ export default function Home() {
                   <img
                     src={stat.image}
                     alt={`${stat.label} illustration`}
-                    className="home-card-image home-card-image--dark mt-4 h-20 w-20 rounded-2xl object-contain sm:h-24 sm:w-24"
+                    className="home-card-image home-card-image--dark mt-4 h-20 w-20 rounded-xl object-contain sm:h-24 sm:w-24"
                     loading="lazy"
                   />
                   <img
                     src={stat.lightImage}
                     alt={`${stat.label} illustration`}
-                    className="home-card-image home-card-image--light mt-4 h-20 w-20 rounded-2xl object-contain sm:h-24 sm:w-24"
+                    className="home-card-image home-card-image--light mt-4 h-20 w-20 rounded-xl object-contain sm:h-24 sm:w-24"
                     loading="lazy"
                   />
                 </div>

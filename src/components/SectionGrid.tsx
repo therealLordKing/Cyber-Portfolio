@@ -119,7 +119,7 @@ export default function SectionGrid({
                       : {})}
                   className={`frosted-card interactive-card flex w-full text-left text-sm text-[color:var(--text)] transition-all duration-300 ${
                     isCompact
-                      ? "min-h-[96px] flex-col justify-between rounded-2xl p-3"
+                      ? "min-h-[96px] flex-col justify-between rounded-xl p-3"
                       : "min-h-[180px] flex-col justify-between rounded-3xl p-5"
                   } ${
                     isExpanded && !isCompact
@@ -133,7 +133,7 @@ export default function SectionGrid({
                         {item.icon ? (
                           <div
                             className={`flex items-center justify-center border border-[color:var(--border)] bg-[color:var(--surface-2)] text-[color:var(--text-strong)] ${
-                              isCompact ? "h-8 w-8 rounded-lg" : "h-10 w-10 rounded-2xl"
+                              isCompact ? "h-8 w-8 rounded-md" : "h-10 w-10 rounded-2xl"
                             }`}
                           >
                             {item.icon}
