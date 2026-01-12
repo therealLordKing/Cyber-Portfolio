@@ -7,6 +7,7 @@ type SectionItem = {
   description: string;
   details?: string;
   tags?: string[];
+  href?: string;
 };
 
 type SectionGridProps = {
@@ -84,8 +85,10 @@ export default function SectionGrid({
             ? items.filter((item) => item.title === expandedTitle)
             : items
           ).map((item) => {
-            const isExpanded = expandedTitle === item.title;
+            const isLink = Boolean(item.href);
+            const isExpanded = !isLink && expandedTitle === item.title;
             const detailsText = item.details ?? item.description;
+            const CardTag = isLink ? "a" : "button";
 
             return (
               <div
@@ -101,12 +104,15 @@ export default function SectionGrid({
                     Back
                   </button>
                 ) : null}
-                <button
-                  type="button"
-                  onClick={() =>
-                    setExpandedTitle(isExpanded ? null : item.title)
-                  }
-                  aria-expanded={isExpanded}
+                <CardTag
+                  {...(isLink
+                    ? { href: item.href }
+                    : {
+                        type: "button" as const,
+                        onClick: () =>
+                          setExpandedTitle(isExpanded ? null : item.title),
+                        "aria-expanded": isExpanded,
+                      })}
                   className={`frosted-card interactive-card flex w-full text-left text-sm text-[color:var(--text)] transition-all duration-300 ${
                     isCompact
                       ? "min-h-[120px] flex-col justify-between rounded-2xl p-4"
@@ -138,9 +144,11 @@ export default function SectionGrid({
                         </div>
                       </div>
                     </div>
-                    <p className="text-sm leading-relaxed text-[color:var(--text-soft)]">
-                      {item.description}
-                    </p>
+                    {item.description ? (
+                      <p className="text-sm leading-relaxed text-[color:var(--text-soft)]">
+                        {item.description}
+                      </p>
+                    ) : null}
                     {!isCompact ? (
                       <p
                         className={`expandable-details text-xs text-[color:var(--text-muted)] ${
@@ -163,7 +171,7 @@ export default function SectionGrid({
                       ))}
                     </div>
                   ) : null}
-                </button>
+                </CardTag>
               </div>
             );
           })}

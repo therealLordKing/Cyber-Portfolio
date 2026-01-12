@@ -25,7 +25,7 @@ export default function Contact() {
         items={[
           {
             title: "YouTube",
-            description: "Visual walkthroughs, builds, and security demos.",
+            description: "",
             icon: (
               <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
                 <path
@@ -43,7 +43,7 @@ export default function Contact() {
           },
           {
             title: "GitHub",
-            description: "Open-source code, experiments, and tooling.",
+            description: "",
             icon: (
               <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
                 <path
@@ -55,7 +55,7 @@ export default function Contact() {
           },
           {
             title: "X",
-            description: "Short updates, collaboration openings, and notes.",
+            description: "",
             icon: (
               <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
                 <path
@@ -67,7 +67,7 @@ export default function Contact() {
           },
           {
             title: "Instagram",
-            description: "Behind-the-scenes design, lab work, and visuals.",
+            description: "",
             icon: (
               <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
                 <path
@@ -83,7 +83,8 @@ export default function Contact() {
           },
           {
             title: "Email",
-            description: "Direct outreach for proposals and next steps.",
+            description: "",
+            href: "mailto:often136@pjcyber.com",
             icon: (
               <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
                 <path
