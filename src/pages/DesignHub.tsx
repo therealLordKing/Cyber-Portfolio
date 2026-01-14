@@ -1,173 +1,130 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import SectionGrid from "../components/SectionGrid";
 
-export default function Contact() {
+const templateOptions = [
+  { value: "one-page-brand-site", label: "One-page brand site" },
+  { value: "portfolio-grid", label: "Portfolio grid" },
+  { value: "service-studio", label: "Service studio" },
+  { value: "product-release", label: "Product release" },
+  { value: "content-hub", label: "Content hub" },
+  { value: "startup-saas", label: "Startup SaaS" },
+  { value: "ecommerce-storefront", label: "Ecommerce storefront" },
+  { value: "event-landing", label: "Event landing" },
+];
+
+const styleOptions = [
+  { value: "glass", label: "Glass" },
+  { value: "solid", label: "Solid" },
+  { value: "outline", label: "Outline" },
+] as const;
+
+export default function DesignHub() {
   const [searchParams] = useSearchParams();
   const [hasWebsite, setHasWebsite] = useState<"yes" | "no">("no");
   const [serviceNeed, setServiceNeed] = useState<string>(
     searchParams.get("service") ?? ""
   );
-  const [emailCopied, setEmailCopied] = useState(false);
-  const emailAddress = "often136@pjcyber.com";
+  const [siteType, setSiteType] = useState<string>("");
+  const [styleChoice, setStyleChoice] = useState<
+    (typeof styleOptions)[number]["value"]
+  >("glass");
   const isCustomPage = serviceNeed === "custom-web-page-design";
-
-  const urlInputClass = hasWebsite === "yes"
-    ? "w-full rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-1)] px-4 py-3 text-sm text-[color:var(--text-strong)] placeholder:text-[color:var(--text-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
-    : "w-full cursor-not-allowed rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-2)] px-4 py-3 text-sm text-[color:var(--text-muted)] opacity-60";
-
   const showMessageField =
     isCustomPage || serviceNeed === "something-else" || serviceNeed === "not-sure";
   const messagePrompt = isCustomPage
     ? "Tell me your ideas and let's bring them to life!"
     : "Tell me a bit more";
 
-  const handleCopyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(emailAddress);
-      setEmailCopied(true);
-      window.setTimeout(() => setEmailCopied(false), 2000);
-    } catch {
-      window.prompt("Copy email:", emailAddress);
-    }
-  };
+  const urlInputClass = hasWebsite === "yes"
+    ? "w-full rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-1)] px-4 py-3 text-sm text-[color:var(--text-strong)] placeholder:text-[color:var(--text-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
+    : "w-full cursor-not-allowed rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-2)] px-4 py-3 text-sm text-[color:var(--text-muted)] opacity-60";
 
   return (
-    <>
-      <SectionGrid
-        title="Contact"
-        description="Reach out for collaborations, security reviews, or website projects."
-        eyebrow="Contact"
-        sectionTitle="Ways to connect"
-        badge="My socials will be up soon, for now fill out your details below and I will return your enquiry."
-        showFocusCard={false}
-        itemVariant="compact"
-        items={[
-          {
-            title: "YouTube",
-            description: "",
-            icon: (
-              <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
-                <path
-                  d="M10 15l5-3-5-3v6Z"
-                  fill="currentColor"
-                />
-                <path
-                  d="M21.2 8.6a2.8 2.8 0 0 0-2-2C17.5 6 12 6 12 6s-5.5 0-7.2.6a2.8 2.8 0 0 0-2 2A29 29 0 0 0 2.5 12a29 29 0 0 0 .3 3.4 2.8 2.8 0 0 0 2 2c1.7.6 7.2.6 7.2.6s5.5 0 7.2-.6a2.8 2.8 0 0 0 2-2A29 29 0 0 0 21.5 12a29 29 0 0 0-.3-3.4Z"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                />
-              </svg>
-            ),
-          },
-          {
-            title: "GitHub",
-            description: "",
-            icon: (
-              <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
-                <path
-                  d="M12 2.5a9.5 9.5 0 0 0-3 18.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.4-1-1-1.3-1-1.3-.8-.6.1-.6.1-.6.9.1 1.3.9 1.3.9.8 1.3 2 1 2.5.8.1-.6.3-1 .6-1.2-2.2-.2-4.5-1.1-4.5-5a3.8 3.8 0 0 1 1-2.6 3.5 3.5 0 0 1 .1-2.6s.8-.3 2.7 1a9.2 9.2 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1a3.5 3.5 0 0 1 .1 2.6 3.8 3.8 0 0 1 1 2.6c0 3.9-2.3 4.8-4.5 5 .3.3.6.8.6 1.6v2.3c0 .3.2.6.7.5A9.5 9.5 0 0 0 12 2.5Z"
-                  fill="currentColor"
-                />
-              </svg>
-            ),
-          },
-          {
-            title: "X",
-            description: "",
-            icon: (
-              <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
-                <path
-                  d="M5 4h4.3l4.1 5.7L18 4h2l-5.8 8.1L20 20h-4.3l-4.5-6.3L6.5 20h-2l6.3-8.7L5 4Z"
-                  fill="currentColor"
-                />
-              </svg>
-            ),
-          },
-          {
-            title: "Instagram",
-            description: "",
-            icon: (
-              <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
-                <path
-                  d="M7.5 3.5h9a4 4 0 0 1 4 4v9a4 4 0 0 1-4 4h-9a4 4 0 0 1-4-4v-9a4 4 0 0 1 4-4Z"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                />
-                <circle cx="12" cy="12" r="3.3" fill="none" stroke="currentColor" strokeWidth="1.6" />
-                <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" />
-              </svg>
-            ),
-          },
-          {
-            title: "Email",
-            description: "",
-            content: (
-              <div className="space-y-3">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--text-muted)]">
-                  <span className="block max-w-full break-all text-[11px] tracking-[0.18em]">
-                    {emailAddress}
-                  </span>
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  <a
-                    href={`mailto:${emailAddress}`}
-                    className="inline-flex items-center justify-center rounded-none border border-[color:var(--accent)] bg-[color:var(--surface-2)] px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--accent)] transition hover:bg-[color:var(--surface-3)] hover:text-[color:var(--text-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
-                  >
-                    Email me
-                  </a>
-                  <button
-                    type="button"
-                    onClick={handleCopyEmail}
-                    className="inline-flex items-center justify-center rounded-none border border-[color:var(--border-strong)] bg-transparent px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--text-soft)] transition hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
-                  >
-                    {emailCopied ? "Copied" : "Copy email"}
-                  </button>
-                </div>
-              </div>
-            ),
-            icon: (
-              <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
-                <path
-                  d="M4 6.5h16a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5H4A1.5 1.5 0 0 1 2.5 16v-8A1.5 1.5 0 0 1 4 6.5Z"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                />
-                <path
-                  d="m3.5 7.5 8.5 5.5 8.5-5.5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                />
-              </svg>
-            ),
-          },
-        ]}
-      />
-      <section className="frosted-panel mt-12 rounded-[32px] p-6 sm:p-8">
+    <section className="space-y-10">
+      <div className="frosted-panel rounded-[32px] p-6 text-center sm:p-8 sm:text-left">
+        <p className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
+          Website designs
+        </p>
+        <h1 className="mt-3 font-orbitron text-3xl font-semibold tracking-tight text-[color:var(--text-strong)] sm:text-4xl">
+          Design hub
+        </h1>
+        <p className="mt-3 max-w-2xl text-base text-[color:var(--text-soft)]">
+          Share the details for your website design, and I'll follow up with the
+          next steps.
+        </p>
+      </div>
+
+      <section className="frosted-panel rounded-[32px] p-6 sm:p-8">
         <div className="space-y-6">
           <div className="space-y-2">
             <h2 className="font-orbitron text-2xl font-semibold text-[color:var(--text-strong)]">
-              Tell me about your project
+              Design form
             </h2>
           </div>
           <form
             className="grid gap-5"
-            name="contact"
+            name="design-hub"
             method="post"
             data-netlify="true"
             netlify-honeypot="bot-field"
             action="/thanks"
           >
-            <input type="hidden" name="form-name" value="contact" />
+            <input type="hidden" name="form-name" value="design-hub" />
             <p className="hidden">
               <label>
                 Don't fill this out: <input name="bot-field" />
               </label>
             </p>
+
+            <label className="space-y-2 text-sm text-[color:var(--text-soft)]">
+              <span>What type of website do you need?</span>
+              <select
+                name="website-type"
+                className="w-full rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-1)] px-4 py-3 text-sm text-[color:var(--text-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
+                value={siteType}
+                onChange={(event) => setSiteType(event.target.value)}
+              >
+                <option value="" disabled>
+                  Select one
+                </option>
+                {templateOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <fieldset className="space-y-3">
+              <legend className="text-sm text-[color:var(--text-soft)]">
+                What style?
+              </legend>
+              <div className="flex flex-wrap gap-4">
+                {styleOptions.map((option) => (
+                  <label
+                    key={option.value}
+                    className={`flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] ${
+                      styleChoice === option.value
+                        ? "border-[color:var(--accent)] text-[color:var(--text-strong)]"
+                        : "border-[color:var(--border)] text-[color:var(--text-muted)]"
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="style"
+                      value={option.value}
+                      checked={styleChoice === option.value}
+                      onChange={() =>
+                        setStyleChoice(option.value)
+                      }
+                      className="sr-only"
+                    />
+                    {option.label}
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+
             <label className="space-y-2 text-sm text-[color:var(--text-soft)]">
               <span>What is your name?</span>
               <input
@@ -279,6 +236,6 @@ export default function Contact() {
           </form>
         </div>
       </section>
-    </>
+    </section>
   );
 }

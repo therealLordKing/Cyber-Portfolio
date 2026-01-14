@@ -25,7 +25,7 @@ type SectionGridProps = {
   itemVariant?: "default" | "compact";
   headerCard?: {
     title: string;
-    description?: string;
+    description?: ReactNode;
   };
 };
 

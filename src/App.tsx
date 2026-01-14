@@ -7,6 +7,7 @@ import Projects from "./pages/Projects";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import WebsiteDesigns from "./pages/WebsiteDesigns";
+import DesignHub from "./pages/DesignHub";
 import Thanks from "./pages/Thanks";
 import OnePageBrandSite from "./pages/templates/OnePageBrandSite";
 import PortfolioGrid from "./pages/templates/PortfolioGrid";
@@ -72,6 +73,7 @@ export default function App() {
                   <Route path="/cyber-portfolio" element={<CyberPortfolio />} />
                   <Route path="/projects" element={<Projects />} />
                   <Route path="/website-designs" element={<WebsiteDesigns />} />
+                  <Route path="/design-hub" element={<DesignHub />} />
                   <Route
                     path="/website-designs/one-page-brand-site"
                     element={<OnePageBrandSite />}
