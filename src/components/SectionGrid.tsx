@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 type SectionItem = {
   icon?: ReactNode;
@@ -8,6 +9,8 @@ type SectionItem = {
   details?: string;
   tags?: string[];
   href?: string;
+  linkHref?: string;
+  linkLabel?: string;
   content?: ReactNode;
 };
 
@@ -20,6 +23,10 @@ type SectionGridProps = {
   items: SectionItem[];
   showFocusCard?: boolean;
   itemVariant?: "default" | "compact";
+  headerCard?: {
+    title: string;
+    description?: string;
+  };
 };
 
 export default function SectionGrid({
@@ -31,13 +38,21 @@ export default function SectionGrid({
   items,
   showFocusCard = false,
   itemVariant = "default",
+  headerCard,
 }: SectionGridProps) {
   const [expandedTitle, setExpandedTitle] = useState<string | null>(null);
   const isCompact = itemVariant === "compact";
+  const hasRightCard = showFocusCard || Boolean(headerCard);
 
   return (
     <section className="space-y-10">
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:items-end">
+      <div
+        className={`grid gap-6 ${
+          hasRightCard
+            ? "lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:items-end"
+            : ""
+        }`}
+      >
         <div className="space-y-4 text-center sm:text-left">
           <p className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
             {eyebrow}
@@ -49,7 +64,18 @@ export default function SectionGrid({
             {description}
           </p>
         </div>
-        {showFocusCard ? (
+        {headerCard ? (
+          <div className="frosted-panel rounded-3xl p-6 text-center sm:text-left">
+            <h2 className="font-orbitron text-2xl font-semibold text-[color:var(--text-strong)]">
+              {headerCard.title}
+            </h2>
+            {headerCard.description ? (
+              <p className="mt-3 text-base text-[color:var(--text-soft)]">
+                {headerCard.description}
+              </p>
+            ) : null}
+          </div>
+        ) : showFocusCard ? (
           <div className="frosted-panel rounded-3xl p-6 text-center sm:text-left">
             <p className="text-sm text-[color:var(--text-soft)]">Focus area</p>
             <h2 className="mt-2 font-orbitron text-xl font-semibold text-[color:var(--text-strong)]">
@@ -87,7 +113,7 @@ export default function SectionGrid({
             : items.filter((item) => item.title === expandedTitle)
           ).map((item) => {
             const isLink = Boolean(item.href);
-            const canExpand = !isCompact && !isLink;
+            const canExpand = !isCompact && !isLink && !item.linkHref;
             const isExpanded = canExpand && expandedTitle === item.title;
             const detailsText = item.details ?? item.description;
             const CardTag = isLink ? "a" : canExpand ? "button" : "div";
@@ -167,16 +193,29 @@ export default function SectionGrid({
                       </p>
                     ) : null}
                   </div>
-                  {!isCompact && item.tags && item.tags.length > 0 ? (
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {item.tags.map((tag) => (
+                  {!isCompact ? (
+                    <div className="mt-4 space-y-3">
+                      {item.tags && item.tags.length > 0 ? (
+                        <div className="flex flex-wrap gap-2">
+                          {item.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-full border border-[color:var(--border)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--text-muted)]"
+                          className="tag-chip px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em]"
                         >
                           {tag}
                         </span>
-                      ))}
+                          ))}
+                        </div>
+                      ) : null}
+                      {item.linkHref ? (
+                        <Link
+                          to={item.linkHref}
+                          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--accent)] transition hover:text-[color:var(--text-strong)]"
+                        >
+                          {item.linkLabel ?? "Click to see template"}
+                          <span aria-hidden="true">-&gt;</span>
+                        </Link>
+                      ) : null}
                     </div>
                   ) : null}
                 </CardTag>

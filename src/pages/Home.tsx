@@ -235,7 +235,7 @@ export default function Home() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-[color:var(--border)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-[color:var(--text-muted)]"
+                        className="tag-chip px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em]"
                       >
                         {tag}
                       </span>

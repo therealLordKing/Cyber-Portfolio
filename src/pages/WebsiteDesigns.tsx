@@ -7,7 +7,11 @@ export default function WebsiteDesigns() {
       description="Pick a starting point before requesting a custom build or template swap."
       eyebrow="Template Library"
       sectionTitle="Browse styles"
-      badge="Previews launching soon"
+      badge=""
+      headerCard={{
+        title: "Ready to make this real?",
+        description: "Let's fill out your design form",
+      }}
       items={[
         {
           title: "One-page brand site",
@@ -16,6 +20,7 @@ export default function WebsiteDesigns() {
           details:
             "Includes layout notes, typography choices, and ideal use cases for fast conversions.",
           tags: ["Landing", "Business"],
+          linkHref: "/website-designs/one-page-brand-site",
         },
         {
           title: "Portfolio grid",
@@ -24,6 +29,7 @@ export default function WebsiteDesigns() {
           details:
             "Detailed components cover image grids, project filters, and spotlight sections.",
           tags: ["Showcase", "Visual"],
+          linkHref: "/website-designs/portfolio-grid",
         },
         {
           title: "Service studio",
@@ -32,6 +38,7 @@ export default function WebsiteDesigns() {
           details:
             "Expanded plans cover service tiers, intake forms, and testimonial layouts.",
           tags: ["Services", "Trust"],
+          linkHref: "/website-designs/service-studio",
         },
         {
           title: "Product release",
@@ -40,6 +47,7 @@ export default function WebsiteDesigns() {
           details:
             "Expect full content outlines for pricing tables, launch timelines, and FAQs.",
           tags: ["Product", "Launch"],
+          linkHref: "/website-designs/product-release",
         },
         {
           title: "Content hub",
@@ -48,6 +56,34 @@ export default function WebsiteDesigns() {
           details:
             "Includes category navigation, editorial grids, and newsletter sign-up blocks.",
           tags: ["Editorial", "Resources"],
+          linkHref: "/website-designs/content-hub",
+        },
+        {
+          title: "Startup SaaS",
+          description:
+            "Product-led layout for a SaaS launch with clear value props and demos.",
+          details:
+            "Flow includes feature snapshots, pricing tiers, and conversion-ready CTAs.",
+          tags: ["SaaS", "Conversion"],
+          linkHref: "/website-designs/startup-saas",
+        },
+        {
+          title: "Ecommerce storefront",
+          description:
+            "Retail-first layout for products, collections, and smooth checkout paths.",
+          details:
+            "Highlights hero offers, collection rows, and product story sections.",
+          tags: ["Ecommerce", "Retail"],
+          linkHref: "/website-designs/ecommerce-storefront",
+        },
+        {
+          title: "Event landing",
+          description:
+            "Event-driven page with schedule, speakers, and ticket conversion blocks.",
+          details:
+            "Includes agenda flow, speaker spotlights, and ticketing prompts.",
+          tags: ["Event", "Launch"],
+          linkHref: "/website-designs/event-landing",
         },
         {
           title: "Coming soon",
@@ -56,6 +92,7 @@ export default function WebsiteDesigns() {
           details:
             "More layouts will cover startups, agencies, and ecommerce storefronts.",
           tags: ["In progress"],
+          linkHref: "/website-designs/coming-soon",
         },
       ]}
     />

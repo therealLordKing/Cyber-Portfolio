@@ -34,6 +34,15 @@ html.theme-light {
   --grid-line: rgba(120, 140, 180, 0.08);
   --brand-glow: rgba(210, 160, 255, 0.35);
   --bg-gradient: linear-gradient(180deg, #0c1224 0%, #221f48 50%, #3a2148 100%);
+  --template-panel-bg: var(--surface-2);
+  --template-panel-border: var(--border);
+  --template-panel-shadow: 0 22px 60px -42px var(--shadow),
+    0 0 36px -18px var(--accent-soft);
+  --template-card-bg: var(--surface-1);
+  --template-card-border: var(--border);
+  --template-card-shadow: 0 16px 40px -32px var(--shadow);
+  --template-outline-style: dashed;
+  --template-outline-border: var(--border);
 }
 
 html.theme-light {
@@ -128,6 +137,144 @@ body {
   border: 1px solid var(--border);
   box-shadow: 0 16px 40px -32px var(--shadow);
   backdrop-filter: blur(14px);
+}
+
+.template-panel {
+  background: var(--template-panel-bg);
+  border-color: var(--template-panel-border);
+  box-shadow: var(--template-panel-shadow);
+}
+
+.template-card {
+  background: var(--template-card-bg);
+  border-color: var(--template-card-border);
+  box-shadow: var(--template-card-shadow);
+}
+
+.template-outline {
+  border-style: var(--template-outline-style);
+  border-color: var(--template-outline-border);
+}
+
+.tag-chip {
+  background-color: var(--surface-3);
+  border: 1px solid var(--border-strong);
+  color: var(--text-strong);
+  clip-path: polygon(
+    10px 0%,
+    calc(100% - 10px) 0%,
+    100% 50%,
+    calc(100% - 10px) 100%,
+    10px 100%,
+    0% 50%
+  );
+}
+
+.template-preview--solid {
+  --text-strong: #f5f5f5;
+  --text: #e6e6e6;
+  --text-soft: #c9c9c9;
+  --text-muted: #a1a1a1;
+  --border: rgba(255, 255, 255, 0.14);
+  --border-strong: rgba(255, 255, 255, 0.24);
+  --accent: #f5f5f5;
+  --accent-soft: rgba(255, 255, 255, 0.12);
+  --accent-shadow: rgba(0, 0, 0, 0.5);
+  --surface-1: #151515;
+  --surface-2: #111111;
+  --surface-3: #1c1c1c;
+  --template-panel-bg: #111111;
+  --template-panel-border: rgba(255, 255, 255, 0.12);
+  --template-panel-shadow: 0 16px 34px -24px rgba(0, 0, 0, 0.65);
+  --template-card-bg: #171717;
+  --template-card-border: rgba(255, 255, 255, 0.12);
+  --template-card-shadow: 0 10px 24px -18px rgba(0, 0, 0, 0.55);
+  --template-outline-style: solid;
+  --template-outline-border: rgba(255, 255, 255, 0.22);
+}
+
+.template-preview--outline {
+  --text-strong: #f5f5f5;
+  --text: #eaeaea;
+  --text-soft: #cfcfcf;
+  --text-muted: #b0b0b0;
+  --border: rgba(255, 255, 255, 0.32);
+  --border-strong: rgba(255, 255, 255, 0.6);
+  --accent: #ffffff;
+  --accent-soft: rgba(255, 255, 255, 0.12);
+  --accent-shadow: rgba(0, 0, 0, 0.45);
+  --surface-1: transparent;
+  --surface-2: transparent;
+  --surface-3: rgba(255, 255, 255, 0.04);
+  --template-panel-bg: transparent;
+  --template-panel-border: rgba(255, 255, 255, 0.6);
+  --template-panel-shadow: none;
+  --template-card-bg: transparent;
+  --template-card-border: rgba(255, 255, 255, 0.6);
+  --template-card-shadow: none;
+  --template-outline-style: solid;
+  --template-outline-border: rgba(255, 255, 255, 0.6);
+}
+
+html.theme-light .template-preview--solid,
+html.theme-light .template-preview--outline {
+  --text-strong: #111111;
+  --text: #1a1a1a;
+  --text-soft: #4b4b4b;
+  --text-muted: #6b6b6b;
+  --border: rgba(0, 0, 0, 0.12);
+  --border-strong: rgba(0, 0, 0, 0.2);
+  --accent: #111111;
+  --accent-soft: rgba(0, 0, 0, 0.08);
+  --accent-shadow: rgba(0, 0, 0, 0.18);
+  --surface-1: #ffffff;
+  --surface-2: #f6f6f6;
+  --surface-3: #efefef;
+  --template-panel-bg: #ffffff;
+  --template-panel-border: rgba(0, 0, 0, 0.14);
+  --template-panel-shadow: 0 10px 24px -18px rgba(0, 0, 0, 0.2);
+  --template-card-bg: #ffffff;
+  --template-card-border: rgba(0, 0, 0, 0.14);
+  --template-card-shadow: 0 8px 18px -12px rgba(0, 0, 0, 0.18);
+  --template-outline-style: solid;
+  --template-outline-border: rgba(0, 0, 0, 0.26);
+}
+
+html.theme-light .template-preview--glass {
+  --text-strong: #1a1a1a;
+  --text: #222222;
+  --text-soft: #4b4b4b;
+  --text-muted: #6b6b6b;
+  --border: rgba(0, 0, 0, 0.18);
+  --border-strong: rgba(0, 0, 0, 0.28);
+  --accent: #111111;
+  --accent-soft: rgba(0, 0, 0, 0.1);
+  --accent-shadow: rgba(0, 0, 0, 0.18);
+  --surface-1: rgba(255, 255, 255, 0.75);
+  --surface-2: rgba(255, 255, 255, 0.68);
+  --surface-3: rgba(0, 0, 0, 0.04);
+  --template-panel-bg: rgba(255, 255, 255, 0.7);
+  --template-panel-border: rgba(0, 0, 0, 0.22);
+  --template-panel-shadow: 0 12px 24px -18px rgba(0, 0, 0, 0.18);
+  --template-card-bg: rgba(255, 255, 255, 0.8);
+  --template-card-border: rgba(0, 0, 0, 0.2);
+  --template-card-shadow: 0 10px 20px -14px rgba(0, 0, 0, 0.16);
+  --template-outline-style: dashed;
+  --template-outline-border: rgba(0, 0, 0, 0.32);
+}
+
+html.theme-light .template-preview--outline {
+  --surface-1: transparent;
+  --surface-2: transparent;
+  --surface-3: rgba(0, 0, 0, 0.05);
+  --template-panel-bg: transparent;
+  --template-panel-border: rgba(0, 0, 0, 0.42);
+  --template-panel-shadow: none;
+  --template-card-bg: transparent;
+  --template-card-border: rgba(0, 0, 0, 0.42);
+  --template-card-shadow: none;
+  --template-outline-style: dashed;
+  --template-outline-border: rgba(0, 0, 0, 0.48);
 }
 
 .frosted-card.is-active {
