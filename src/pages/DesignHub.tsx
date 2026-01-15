@@ -10,6 +10,7 @@ const templateOptions = [
   { value: "startup-saas", label: "Startup SaaS" },
   { value: "ecommerce-storefront", label: "Ecommerce storefront" },
   { value: "event-landing", label: "Event landing" },
+  { value: "custom-site-request", label: "Custom site request" },
 ];
 
 const styleOptions = [
@@ -20,11 +21,12 @@ const styleOptions = [
 
 export default function DesignHub() {
   const [searchParams] = useSearchParams();
+  const initialServiceNeed = searchParams.get("service") ?? "";
   const [hasWebsite, setHasWebsite] = useState<"yes" | "no">("no");
-  const [serviceNeed, setServiceNeed] = useState<string>(
-    searchParams.get("service") ?? ""
+  const [serviceNeed, setServiceNeed] = useState<string>(initialServiceNeed);
+  const [siteType, setSiteType] = useState<string>(
+    initialServiceNeed === "custom-web-page-design" ? "custom-site-request" : ""
   );
-  const [siteType, setSiteType] = useState<string>("");
   const [styleChoice, setStyleChoice] = useState<
     (typeof styleOptions)[number]["value"]
   >("glass");
@@ -82,7 +84,13 @@ export default function DesignHub() {
                 name="website-type"
                 className="w-full rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-1)] px-4 py-3 text-sm text-[color:var(--text-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
                 value={siteType}
-                onChange={(event) => setSiteType(event.target.value)}
+                onChange={(event) => {
+                  const nextValue = event.target.value;
+                  setSiteType(nextValue);
+                  if (nextValue === "custom-site-request") {
+                    setServiceNeed("custom-web-page-design");
+                  }
+                }}
               >
                 <option value="" disabled>
                   Select one
@@ -93,6 +101,11 @@ export default function DesignHub() {
                   </option>
                 ))}
               </select>
+              {siteType === "custom-site-request" ? (
+                <span className="block text-xs text-[color:var(--text-muted)]">
+                  Pick this for a fully custom layout or a fresh concept.
+                </span>
+              ) : null}
             </label>
 
             <fieldset className="space-y-3">

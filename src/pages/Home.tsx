@@ -104,7 +104,7 @@ export default function Home() {
                 </Link>{" "}
                 me with your preferred website design, or{" "}
                 <Link
-                  to="/contact#design-input"
+                  to="/design-hub?service=custom-web-page-design"
                   className="text-[color:var(--accent)] underline decoration-transparent underline-offset-4 transition hover:decoration-[color:var(--accent)]"
                 >
                   design your own

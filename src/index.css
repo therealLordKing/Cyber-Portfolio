@@ -245,23 +245,34 @@ html.theme-light .template-preview--glass {
   --text: #222222;
   --text-soft: #4b4b4b;
   --text-muted: #6b6b6b;
-  --border: rgba(0, 0, 0, 0.18);
-  --border-strong: rgba(0, 0, 0, 0.28);
+  --border: rgba(255, 255, 255, 0.5);
+  --border-strong: rgba(255, 255, 255, 0.68);
   --accent: #111111;
   --accent-soft: rgba(0, 0, 0, 0.1);
   --accent-shadow: rgba(0, 0, 0, 0.18);
-  --surface-1: rgba(255, 255, 255, 0.75);
-  --surface-2: rgba(255, 255, 255, 0.68);
-  --surface-3: rgba(0, 0, 0, 0.04);
-  --template-panel-bg: rgba(255, 255, 255, 0.7);
-  --template-panel-border: rgba(0, 0, 0, 0.22);
-  --template-panel-shadow: 0 12px 24px -18px rgba(0, 0, 0, 0.18);
-  --template-card-bg: rgba(255, 255, 255, 0.8);
-  --template-card-border: rgba(0, 0, 0, 0.2);
-  --template-card-shadow: 0 10px 20px -14px rgba(0, 0, 0, 0.16);
+  --surface-1: rgba(255, 255, 255, 0.55);
+  --surface-2: rgba(255, 255, 255, 0.38);
+  --surface-3: rgba(255, 255, 255, 0.22);
+  --template-panel-bg: linear-gradient(
+    140deg,
+    rgba(255, 255, 255, 0.62),
+    rgba(255, 255, 255, 0.22)
+  );
+  --template-panel-border: rgba(255, 255, 255, 0.52);
+  --template-panel-shadow: 0 18px 42px -28px rgba(61, 69, 99, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  --template-card-bg: linear-gradient(
+    140deg,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.26)
+  );
+  --template-card-border: rgba(255, 255, 255, 0.48);
+  --template-card-shadow: 0 14px 30px -22px rgba(61, 69, 99, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
   --template-outline-style: dashed;
-  --template-outline-border: rgba(0, 0, 0, 0.32);
+  --template-outline-border: rgba(0, 0, 0, 0.26);
 }
+
 
 html.theme-light .template-preview--outline {
   --surface-1: transparent;

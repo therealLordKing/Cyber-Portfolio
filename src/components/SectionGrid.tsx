@@ -112,11 +112,18 @@ export default function SectionGrid({
             ? items
             : items.filter((item) => item.title === expandedTitle)
           ).map((item) => {
-            const isLink = Boolean(item.href);
-            const canExpand = !isCompact && !isLink && !item.linkHref;
+            const hasRouterLink = Boolean(item.linkHref);
+            const hasAnchorLink = Boolean(item.href);
+            const canExpand = !isCompact && !hasRouterLink && !hasAnchorLink;
             const isExpanded = canExpand && expandedTitle === item.title;
             const detailsText = item.details ?? item.description;
-            const CardTag = isLink ? "a" : canExpand ? "button" : "div";
+            const CardTag = hasRouterLink
+              ? Link
+              : hasAnchorLink
+                ? "a"
+                : canExpand
+                  ? "button"
+                  : "div";
 
             return (
               <div
@@ -133,16 +140,18 @@ export default function SectionGrid({
                   </button>
                 ) : null}
                 <CardTag
-                  {...(isLink
-                    ? { href: item.href }
-                    : canExpand
-                      ? {
-                          type: "button" as const,
-                          onClick: () =>
-                            setExpandedTitle(isExpanded ? null : item.title),
-                          "aria-expanded": isExpanded,
-                        }
-                      : {})}
+                  {...(hasRouterLink
+                    ? { to: item.linkHref }
+                    : hasAnchorLink
+                      ? { href: item.href }
+                      : canExpand
+                        ? {
+                            type: "button" as const,
+                            onClick: () =>
+                              setExpandedTitle(isExpanded ? null : item.title),
+                            "aria-expanded": isExpanded,
+                          }
+                        : {})}
                   className={`frosted-card interactive-card flex w-full text-left text-sm text-[color:var(--text)] transition-all duration-300 ${
                     isCompact
                       ? "min-h-[96px] flex-col justify-between rounded-xl p-3"
@@ -206,15 +215,6 @@ export default function SectionGrid({
                         </span>
                           ))}
                         </div>
-                      ) : null}
-                      {item.linkHref ? (
-                        <Link
-                          to={item.linkHref}
-                          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--accent)] transition hover:text-[color:var(--text-strong)]"
-                        >
-                          {item.linkLabel ?? "Click to see template"}
-                          <span aria-hidden="true">-&gt;</span>
-                        </Link>
                       ) : null}
                     </div>
                   ) : null}
