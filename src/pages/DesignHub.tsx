@@ -37,10 +37,6 @@ export default function DesignHub() {
     ? "Tell me your ideas and let's bring them to life!"
     : "Tell me a bit more";
 
-  const urlInputClass = hasWebsite === "yes"
-    ? "w-full rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-1)] px-4 py-3 text-sm text-[color:var(--text-strong)] placeholder:text-[color:var(--text-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
-    : "w-full cursor-not-allowed rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-2)] px-4 py-3 text-sm text-[color:var(--text-muted)] opacity-60";
-
   return (
     <section className="space-y-10">
       <div className="frosted-panel rounded-[32px] p-6 text-center sm:p-8 sm:text-left">
@@ -82,7 +78,7 @@ export default function DesignHub() {
               <span>What type of website do you need?</span>
               <select
                 name="website-type"
-                className="w-full rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-1)] px-4 py-3 text-sm text-[color:var(--text-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
+                className="form-select"
                 value={siteType}
                 onChange={(event) => {
                   const nextValue = event.target.value;
@@ -143,7 +139,7 @@ export default function DesignHub() {
               <input
                 type="text"
                 name="name"
-                className="w-full rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-1)] px-4 py-3 text-sm text-[color:var(--text-strong)] placeholder:text-[color:var(--text-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
+                className="form-input"
                 placeholder="Your name"
               />
             </label>
@@ -153,7 +149,7 @@ export default function DesignHub() {
               <input
                 type="email"
                 name="email"
-                className="w-full rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-1)] px-4 py-3 text-sm text-[color:var(--text-strong)] placeholder:text-[color:var(--text-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
+                className="form-input"
                 placeholder="you@email.com"
               />
             </label>
@@ -196,7 +192,7 @@ export default function DesignHub() {
               <input
                 type="url"
                 name="website"
-                className={urlInputClass}
+                className="form-input"
                 placeholder="https://example.com"
                 disabled={hasWebsite === "no"}
               />
@@ -206,7 +202,7 @@ export default function DesignHub() {
               <span>What do you need?</span>
               <select
                 name="service"
-                className="w-full rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-1)] px-4 py-3 text-sm text-[color:var(--text-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
+                className="form-select"
                 value={serviceNeed}
                 onChange={(event) => setServiceNeed(event.target.value)}
               >
@@ -235,7 +231,7 @@ export default function DesignHub() {
                 <textarea
                   name="message"
                   rows={4}
-                  className="w-full rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-1)] px-4 py-3 text-sm text-[color:var(--text-strong)] placeholder:text-[color:var(--text-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
+                  className="form-textarea"
                   placeholder="Share any goals, ideas, or constraints."
                 />
               </label>

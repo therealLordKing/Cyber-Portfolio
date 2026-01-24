@@ -12,10 +12,6 @@ export default function Contact() {
   const emailAddress = "often136@pjcyber.com";
   const isCustomPage = serviceNeed === "custom-web-page-design";
 
-  const urlInputClass = hasWebsite === "yes"
-    ? "w-full rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-1)] px-4 py-3 text-sm text-[color:var(--text-strong)] placeholder:text-[color:var(--text-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
-    : "w-full cursor-not-allowed rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-2)] px-4 py-3 text-sm text-[color:var(--text-muted)] opacity-60";
-
   const showMessageField =
     isCustomPage || serviceNeed === "something-else" || serviceNeed === "not-sure";
   const messagePrompt = isCustomPage
@@ -173,7 +169,7 @@ export default function Contact() {
               <input
                 type="text"
                 name="name"
-                className="w-full rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-1)] px-4 py-3 text-sm text-[color:var(--text-strong)] placeholder:text-[color:var(--text-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
+                className="form-input"
                 placeholder="Your name"
               />
             </label>
@@ -183,7 +179,7 @@ export default function Contact() {
               <input
                 type="email"
                 name="email"
-                className="w-full rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-1)] px-4 py-3 text-sm text-[color:var(--text-strong)] placeholder:text-[color:var(--text-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
+                className="form-input"
                 placeholder="you@email.com"
               />
             </label>
@@ -226,7 +222,7 @@ export default function Contact() {
               <input
                 type="url"
                 name="website"
-                className={urlInputClass}
+                className="form-input"
                 placeholder="https://example.com"
                 disabled={hasWebsite === "no"}
               />
@@ -236,7 +232,7 @@ export default function Contact() {
               <span>What do you need?</span>
               <select
                 name="service"
-                className="w-full rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-1)] px-4 py-3 text-sm text-[color:var(--text-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
+                className="form-select"
                 value={serviceNeed}
                 onChange={(event) => setServiceNeed(event.target.value)}
               >
@@ -265,7 +261,7 @@ export default function Contact() {
                 <textarea
                   name="message"
                   rows={4}
-                  className="w-full rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-1)] px-4 py-3 text-sm text-[color:var(--text-strong)] placeholder:text-[color:var(--text-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
+                  className="form-textarea"
                   placeholder="Share any goals, ideas, or constraints."
                 />
               </label>

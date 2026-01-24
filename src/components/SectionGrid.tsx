@@ -19,7 +19,7 @@ type SectionGridProps = {
   description: string;
   eyebrow: string;
   sectionTitle: string;
-  badge: string;
+  badge?: string;
   items: SectionItem[];
   showFocusCard?: boolean;
   itemVariant?: "default" | "compact";
@@ -28,6 +28,76 @@ type SectionGridProps = {
     description?: ReactNode;
   };
 };
+
+type CardContentProps = {
+  item: SectionItem;
+  isCompact: boolean;
+  isExpanded: boolean;
+  detailsText: string;
+};
+
+function CardContent({ item, isCompact, isExpanded, detailsText }: CardContentProps) {
+  return (
+    <>
+      <div className="space-y-2">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div className="flex items-center gap-3">
+            {item.icon ? (
+              <div
+                className={`flex items-center justify-center border border-[color:var(--border)] bg-[color:var(--surface-2)] text-[color:var(--text-strong)] ${
+                  isCompact ? "h-8 w-8 rounded-md" : "h-10 w-10 rounded-lg"
+                }`}
+              >
+                {item.icon}
+              </div>
+            ) : null}
+            <div
+              className={`font-bold text-[color:var(--text-strong)] ${
+                isCompact ? "text-sm" : "text-lg"
+              }`}
+            >
+              {item.title}
+            </div>
+          </div>
+        </div>
+        {item.content ? (
+          <div className="text-sm text-[color:var(--text-soft)]">
+            {item.content}
+          </div>
+        ) : item.description ? (
+          <p className="text-sm leading-relaxed text-[color:var(--text-soft)]">
+            {item.description}
+          </p>
+        ) : null}
+        {!isCompact && !item.content ? (
+          <p
+            className={`expandable-details text-xs text-[color:var(--text-muted)] ${
+              isExpanded ? "details-open mt-3" : ""
+            } overflow-hidden`}
+          >
+            {detailsText}
+          </p>
+        ) : null}
+      </div>
+      {!isCompact ? (
+        <div className="mt-4 space-y-3">
+          {item.tags && item.tags.length > 0 ? (
+            <div className="flex flex-wrap gap-2">
+              {item.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="tag-chip px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em]"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+    </>
+  );
+}
 
 export default function SectionGrid({
   title,
@@ -81,9 +151,11 @@ export default function SectionGrid({
             <h2 className="mt-2 font-orbitron text-xl font-semibold text-[color:var(--text-strong)]">
               {sectionTitle}
             </h2>
-            <span className="mt-4 inline-flex rounded-full border border-[color:var(--border)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-[color:var(--text-muted)]">
-              {badge}
-            </span>
+            {badge ? (
+              <span className="mt-4 inline-flex rounded-full border border-[color:var(--border)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-[color:var(--text-muted)]">
+                {badge}
+              </span>
+            ) : null}
           </div>
         ) : null}
       </div>
@@ -98,9 +170,11 @@ export default function SectionGrid({
               {sectionTitle}
             </h3>
           </div>
-          <span className="rounded-full border border-[color:var(--border)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-[color:var(--text-muted)]">
-            {badge}
-          </span>
+          {badge ? (
+            <span className="rounded-full border border-[color:var(--border)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-[color:var(--text-muted)]">
+              {badge}
+            </span>
+          ) : null}
         </div>
 
         <div
@@ -127,6 +201,8 @@ export default function SectionGrid({
                 : "hover:border-[color:var(--border-strong)] hover:bg-[color:var(--surface-2)]"
             }`;
 
+            const cardContentProps = { item, isCompact, isExpanded, detailsText };
+
             return (
               <div
                 key={item.title}
@@ -143,121 +219,11 @@ export default function SectionGrid({
                 ) : null}
                 {hasRouterLink ? (
                   <Link to={item.linkHref ?? ""} className={cardClassName}>
-                    <div className="space-y-2">
-                      <div className="flex flex-wrap items-start justify-between gap-3">
-                        <div className="flex items-center gap-3">
-                          {item.icon ? (
-                            <div
-                              className={`flex items-center justify-center border border-[color:var(--border)] bg-[color:var(--surface-2)] text-[color:var(--text-strong)] ${
-                                isCompact ? "h-8 w-8 rounded-md" : "h-10 w-10 rounded-lg"
-                              }`}
-                            >
-                              {item.icon}
-                            </div>
-                          ) : null}
-                          <div
-                            className={`font-bold text-[color:var(--text-strong)] ${
-                              isCompact ? "text-sm" : "text-lg"
-                            }`}
-                          >
-                            {item.title}
-                          </div>
-                        </div>
-                      </div>
-                      {item.content ? (
-                        <div className="text-sm text-[color:var(--text-soft)]">
-                          {item.content}
-                        </div>
-                      ) : item.description ? (
-                        <p className="text-sm leading-relaxed text-[color:var(--text-soft)]">
-                          {item.description}
-                        </p>
-                      ) : null}
-                      {!isCompact && !item.content ? (
-                        <p
-                          className={`expandable-details text-xs text-[color:var(--text-muted)] ${
-                            isExpanded ? "details-open mt-3" : ""
-                          } overflow-hidden`}
-                        >
-                          {detailsText}
-                        </p>
-                      ) : null}
-                    </div>
-                    {!isCompact ? (
-                      <div className="mt-4 space-y-3">
-                        {item.tags && item.tags.length > 0 ? (
-                          <div className="flex flex-wrap gap-2">
-                            {item.tags.map((tag) => (
-                              <span
-                                key={tag}
-                                className="tag-chip px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em]"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                        ) : null}
-                      </div>
-                    ) : null}
+                    <CardContent {...cardContentProps} />
                   </Link>
                 ) : hasAnchorLink ? (
                   <a href={item.href} className={cardClassName}>
-                    <div className="space-y-2">
-                      <div className="flex flex-wrap items-start justify-between gap-3">
-                        <div className="flex items-center gap-3">
-                          {item.icon ? (
-                            <div
-                              className={`flex items-center justify-center border border-[color:var(--border)] bg-[color:var(--surface-2)] text-[color:var(--text-strong)] ${
-                                isCompact ? "h-8 w-8 rounded-md" : "h-10 w-10 rounded-lg"
-                              }`}
-                            >
-                              {item.icon}
-                            </div>
-                          ) : null}
-                          <div
-                            className={`font-bold text-[color:var(--text-strong)] ${
-                              isCompact ? "text-sm" : "text-lg"
-                            }`}
-                          >
-                            {item.title}
-                          </div>
-                        </div>
-                      </div>
-                      {item.content ? (
-                        <div className="text-sm text-[color:var(--text-soft)]">
-                          {item.content}
-                        </div>
-                      ) : item.description ? (
-                        <p className="text-sm leading-relaxed text-[color:var(--text-soft)]">
-                          {item.description}
-                        </p>
-                      ) : null}
-                      {!isCompact && !item.content ? (
-                        <p
-                          className={`expandable-details text-xs text-[color:var(--text-muted)] ${
-                            isExpanded ? "details-open mt-3" : ""
-                          } overflow-hidden`}
-                        >
-                          {detailsText}
-                        </p>
-                      ) : null}
-                    </div>
-                    {!isCompact ? (
-                      <div className="mt-4 space-y-3">
-                        {item.tags && item.tags.length > 0 ? (
-                          <div className="flex flex-wrap gap-2">
-                            {item.tags.map((tag) => (
-                              <span
-                                key={tag}
-                                className="tag-chip px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em]"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                        ) : null}
-                      </div>
-                    ) : null}
+                    <CardContent {...cardContentProps} />
                   </a>
                 ) : canExpand ? (
                   <button
@@ -266,121 +232,11 @@ export default function SectionGrid({
                     aria-expanded={isExpanded}
                     className={cardClassName}
                   >
-                    <div className="space-y-2">
-                      <div className="flex flex-wrap items-start justify-between gap-3">
-                        <div className="flex items-center gap-3">
-                          {item.icon ? (
-                            <div
-                              className={`flex items-center justify-center border border-[color:var(--border)] bg-[color:var(--surface-2)] text-[color:var(--text-strong)] ${
-                                isCompact ? "h-8 w-8 rounded-md" : "h-10 w-10 rounded-lg"
-                              }`}
-                            >
-                              {item.icon}
-                            </div>
-                          ) : null}
-                          <div
-                            className={`font-bold text-[color:var(--text-strong)] ${
-                              isCompact ? "text-sm" : "text-lg"
-                            }`}
-                          >
-                            {item.title}
-                          </div>
-                        </div>
-                      </div>
-                      {item.content ? (
-                        <div className="text-sm text-[color:var(--text-soft)]">
-                          {item.content}
-                        </div>
-                      ) : item.description ? (
-                        <p className="text-sm leading-relaxed text-[color:var(--text-soft)]">
-                          {item.description}
-                        </p>
-                      ) : null}
-                      {!isCompact && !item.content ? (
-                        <p
-                          className={`expandable-details text-xs text-[color:var(--text-muted)] ${
-                            isExpanded ? "details-open mt-3" : ""
-                          } overflow-hidden`}
-                        >
-                          {detailsText}
-                        </p>
-                      ) : null}
-                    </div>
-                    {!isCompact ? (
-                      <div className="mt-4 space-y-3">
-                        {item.tags && item.tags.length > 0 ? (
-                          <div className="flex flex-wrap gap-2">
-                            {item.tags.map((tag) => (
-                              <span
-                                key={tag}
-                                className="tag-chip px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em]"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                        ) : null}
-                      </div>
-                    ) : null}
+                    <CardContent {...cardContentProps} />
                   </button>
                 ) : (
                   <div className={cardClassName}>
-                    <div className="space-y-2">
-                      <div className="flex flex-wrap items-start justify-between gap-3">
-                        <div className="flex items-center gap-3">
-                          {item.icon ? (
-                            <div
-                              className={`flex items-center justify-center border border-[color:var(--border)] bg-[color:var(--surface-2)] text-[color:var(--text-strong)] ${
-                                isCompact ? "h-8 w-8 rounded-md" : "h-10 w-10 rounded-lg"
-                              }`}
-                            >
-                              {item.icon}
-                            </div>
-                          ) : null}
-                          <div
-                            className={`font-bold text-[color:var(--text-strong)] ${
-                              isCompact ? "text-sm" : "text-lg"
-                            }`}
-                          >
-                            {item.title}
-                          </div>
-                        </div>
-                      </div>
-                      {item.content ? (
-                        <div className="text-sm text-[color:var(--text-soft)]">
-                          {item.content}
-                        </div>
-                      ) : item.description ? (
-                        <p className="text-sm leading-relaxed text-[color:var(--text-soft)]">
-                          {item.description}
-                        </p>
-                      ) : null}
-                      {!isCompact && !item.content ? (
-                        <p
-                          className={`expandable-details text-xs text-[color:var(--text-muted)] ${
-                            isExpanded ? "details-open mt-3" : ""
-                          } overflow-hidden`}
-                        >
-                          {detailsText}
-                        </p>
-                      ) : null}
-                    </div>
-                    {!isCompact ? (
-                      <div className="mt-4 space-y-3">
-                        {item.tags && item.tags.length > 0 ? (
-                          <div className="flex flex-wrap gap-2">
-                            {item.tags.map((tag) => (
-                              <span
-                                key={tag}
-                                className="tag-chip px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em]"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                        ) : null}
-                      </div>
-                    ) : null}
+                    <CardContent {...cardContentProps} />
                   </div>
                 )}
               </div>

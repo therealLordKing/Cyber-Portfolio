@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import securityToolsImage from "../assets/images/home/security-tools.jpeg";
 import securityToolsLightImage from "../assets/images/home/security-tools-light.jpeg";
@@ -36,8 +36,50 @@ const featuredProjects = [
   },
 ];
 
+function useTheme() {
+  const [isLight, setIsLight] = useState(() => {
+    if (typeof document === "undefined") return false;
+    return document.documentElement.classList.contains("theme-light");
+  });
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsLight(document.documentElement.classList.contains("theme-light"));
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  return isLight;
+}
+
 export default function Home() {
   const [expandedProject, setExpandedProject] = useState<string | null>(null);
+  const isLightTheme = useTheme();
+
+  const statCards = [
+    {
+      label: "Security tools",
+      image: isLightTheme ? securityToolsLightImage : securityToolsImage,
+    },
+    {
+      label: "Case studies",
+      image: isLightTheme ? caseStudiesLightImage : caseStudiesImage,
+    },
+    {
+      label: "Security checklists",
+      image: isLightTheme ? securityChecklistsLightImage : securityChecklistsImage,
+    },
+    {
+      label: "Custom scripts",
+      image: isLightTheme ? customScriptsLightImage : customScriptsImage,
+    },
+  ];
 
   return (
     <div className="space-y-16">
@@ -113,28 +155,7 @@ export default function Home() {
               </p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              {[
-                {
-                  label: "Security tools",
-                  image: securityToolsImage,
-                  lightImage: securityToolsLightImage,
-                },
-                {
-                  label: "Case studies",
-                  image: caseStudiesImage,
-                  lightImage: caseStudiesLightImage,
-                },
-                {
-                  label: "Security checklists",
-                  image: securityChecklistsImage,
-                  lightImage: securityChecklistsLightImage,
-                },
-                {
-                  label: "Custom scripts",
-                  image: customScriptsImage,
-                  lightImage: customScriptsLightImage,
-                },
-              ].map((stat) => (
+              {statCards.map((stat) => (
                 <div
                   key={stat.label}
                   className="frosted-card flex min-h-[160px] flex-col items-center justify-between rounded-xl p-4 text-center"
@@ -145,13 +166,7 @@ export default function Home() {
                   <img
                     src={stat.image}
                     alt={`${stat.label} illustration`}
-                    className="home-card-image home-card-image--dark mt-4 h-20 w-20 rounded-xl object-contain sm:h-24 sm:w-24"
-                    loading="lazy"
-                  />
-                  <img
-                    src={stat.lightImage}
-                    alt={`${stat.label} illustration`}
-                    className="home-card-image home-card-image--light mt-4 h-20 w-20 rounded-xl object-contain sm:h-24 sm:w-24"
+                    className="mt-4 h-20 w-20 rounded-xl object-contain sm:h-24 sm:w-24"
                     loading="lazy"
                   />
                 </div>
