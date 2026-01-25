@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Orbitron:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 html,
@@ -20,6 +20,7 @@ html.theme-light {
   --surface-1: rgba(20, 26, 48, 0.68);
   --surface-2: rgba(26, 34, 58, 0.72);
   --surface-3: rgba(34, 44, 74, 0.76);
+  --dropdown-bg: rgb(26, 34, 58);
   --text: #e9eef9;
   --text-strong: #f8fbff;
   --text-soft: #c6d2eb;
@@ -50,6 +51,7 @@ html.theme-light {
   --surface-1: rgba(244, 224, 241, 0.7);
   --surface-2: rgba(235, 214, 240, 0.74);
   --surface-3: rgba(226, 204, 238, 0.78);
+  --dropdown-bg: rgb(235, 214, 240);
   --text: #1b2235;
   --text-strong: #141a2c;
   --text-soft: #3b4660;
@@ -67,7 +69,7 @@ html.theme-light {
 }
 
 body {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   background-color: var(--bg);
   color: var(--text);
 }
@@ -421,4 +423,20 @@ html.theme-light .template-preview--outline {
 .form-textarea:focus-visible {
   outline: none;
   box-shadow: 0 0 0 2px var(--accent);
+}
+
+/* Dropdown animation */
+@keyframes dropdown-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-dropdown {
+  animation: dropdown-enter 0.2s ease-out;
 }

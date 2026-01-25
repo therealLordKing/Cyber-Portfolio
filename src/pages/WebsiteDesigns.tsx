@@ -1,125 +1,81 @@
 import { Link } from "react-router-dom";
-import SectionGrid from "../components/SectionGrid";
+
+const designs = [
+  {
+    title: "One-page brand site",
+    description:
+      "A bold hero, service highlights, and a strong call-to-action for quick launches.",
+    linkHref: "/website-designs/one-page-brand-site",
+  },
+  {
+    title: "Service studio",
+    description:
+      "Detailed sections for offerings, process, and testimonials in a clean layout.",
+    linkHref: "/website-designs/service-studio",
+  },
+  {
+    title: "Online storefront",
+    description:
+      "Retail-first layout for products, collections, and smooth checkout paths.",
+    linkHref: "/website-designs/online-storefront",
+  },
+  {
+    title: "Event landing",
+    description:
+      "Event-driven page with schedule, speakers, and ticket conversion blocks.",
+    linkHref: "/website-designs/event-landing",
+  },
+];
 
 export default function WebsiteDesigns() {
   return (
-    <>
-      <SectionGrid
-        title="Website Designs"
-        description="Pick a starting point before requesting a custom build or template swap."
-        eyebrow="Template Library"
-        sectionTitle="Browse styles"
-        badge=""
-        headerCard={{
-          title: "Ready to make this real?",
-          description: (
-            <>
-              Let's fill out your design form in the{" "}
-            <Link
-              to="/design-hub?service=website-design"
-              className="font-semibold text-[color:var(--accent)] transition hover:text-[color:var(--text-strong)]"
-            >
-              design hub
-            </Link>
-              .
-            </>
-          ),
-        }}
-        items={[
-          {
-            title: "One-page brand site",
-            description:
-              "A bold hero, service highlights, and a strong call-to-action for quick launches.",
-            details:
-              "Includes layout notes, typography choices, and ideal use cases for fast conversions.",
-            tags: ["Landing", "Business"],
-            linkHref: "/website-designs/one-page-brand-site",
-          },
-          {
-            title: "Portfolio grid",
-            description:
-              "Gallery-first layout for showcasing projects, case studies, or creative work.",
-            details:
-              "Detailed components cover image grids, project filters, and spotlight sections.",
-            tags: ["Showcase", "Visual"],
-            linkHref: "/website-designs/portfolio-grid",
-          },
-          {
-            title: "Service studio",
-            description:
-              "Detailed sections for offerings, process, and testimonials in a clean layout.",
-            details:
-              "Expanded plans cover service tiers, intake forms, and testimonial layouts.",
-            tags: ["Services", "Trust"],
-            linkHref: "/website-designs/service-studio",
-          },
-          {
-            title: "Product release",
-            description:
-              "Launch-ready template with feature blocks, pricing, and onboarding steps.",
-            details:
-              "Expect full content outlines for pricing tables, launch timelines, and FAQs.",
-            tags: ["Product", "Launch"],
-            linkHref: "/website-designs/product-release",
-          },
-          {
-            title: "Content hub",
-            description:
-              "Editorial structure for articles, guides, and resource libraries.",
-            details:
-              "Includes category navigation, editorial grids, and newsletter sign-up blocks.",
-            tags: ["Editorial", "Resources"],
-            linkHref: "/website-designs/content-hub",
-          },
-          {
-            title: "Startup SaaS",
-            description:
-              "Product-led layout for a SaaS launch with clear value props and demos.",
-            details:
-              "Flow includes feature snapshots, pricing tiers, and conversion-ready CTAs.",
-            tags: ["SaaS", "Conversion"],
-            linkHref: "/website-designs/startup-saas",
-          },
-          {
-            title: "Ecommerce storefront",
-            description:
-              "Retail-first layout for products, collections, and smooth checkout paths.",
-            details:
-              "Highlights hero offers, collection rows, and product story sections.",
-            tags: ["Ecommerce", "Retail"],
-            linkHref: "/website-designs/ecommerce-storefront",
-          },
-          {
-            title: "Event landing",
-            description:
-              "Event-driven page with schedule, speakers, and ticket conversion blocks.",
-            details:
-              "Includes agenda flow, speaker spotlights, and ticketing prompts.",
-            tags: ["Event", "Launch"],
-            linkHref: "/website-designs/event-landing",
-          },
-          {
-            title: "Coming soon",
-            description:
-              "Additional templates and industry-specific layouts are on the way.",
-            details:
-              "More layouts will cover startups, agencies, and ecommerce storefronts.",
-            tags: ["In progress"],
-            linkHref: "/website-designs/coming-soon",
-          },
-        ]}
-      />
-      <section className="mt-10 text-center">
-        <div className="frosted-panel rounded-[28px] px-6 py-5 text-sm text-[color:var(--text-soft)]">
-          Can't pick between your favourite designs? Let's make a{" "}
-          <Link
-            to="/contact?service=custom-web-page-design"
-            className="font-semibold text-[color:var(--accent)] transition hover:text-[color:var(--text-strong)]"
-          >
-            custom page!
-          </Link>
+    <section className="space-y-10">
+      <header className="space-y-4 text-center sm:text-left">
+        <p className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
+          Template Library
+        </p>
+        <h1 className="font-orbitron text-3xl font-semibold tracking-tight text-[color:var(--text-strong)] sm:text-4xl">
+          Website Designs
+        </h1>
+        <p className="max-w-2xl text-base leading-relaxed text-[color:var(--text)]">
+          Pick a starting point before requesting a custom build or template swap.
+        </p>
+      </header>
+
+      <div className="frosted-panel rounded-[32px] p-6 sm:p-8">
+        <div className="mb-8">
+          <p className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
+            One page designs
+          </p>
         </div>
-      </section>
-    </>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          {designs.map((design) => (
+            <Link
+              key={design.title}
+              to={design.linkHref}
+              className="group frosted-card rounded-2xl p-6 transition-all duration-300 hover:border-[color:var(--accent)] hover:shadow-[0_0_24px_var(--accent-soft)]"
+            >
+              <h3 className="font-orbitron text-lg font-semibold text-[color:var(--text-strong)] transition group-hover:text-[color:var(--accent)]">
+                {design.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-[color:var(--text-soft)]">
+                {design.description}
+              </p>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <div className="frosted-panel rounded-[28px] px-6 py-5 text-center text-sm text-[color:var(--text-soft)]">
+        Can't pick between your favourite designs? Let's make a{" "}
+        <Link
+          to="/contact?service=custom-web-page-design"
+          className="font-semibold text-[color:var(--accent)] transition hover:text-[color:var(--text-strong)]"
+        >
+          custom page!
+        </Link>
+      </div>
+    </section>
   );
 }

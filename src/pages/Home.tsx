@@ -1,13 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import securityToolsImage from "../assets/images/home/security-tools.jpeg";
-import securityToolsLightImage from "../assets/images/home/security-tools-light.jpeg";
-import caseStudiesImage from "../assets/images/home/case-studies.jpeg";
-import caseStudiesLightImage from "../assets/images/home/case-studies-light.jpeg";
-import securityChecklistsImage from "../assets/images/home/security-checklists.jpeg";
-import securityChecklistsLightImage from "../assets/images/home/security-checklists-light.jpeg";
-import customScriptsImage from "../assets/images/home/custom-scripts.jpeg";
-import customScriptsLightImage from "../assets/images/home/custom-scripts-light.jpeg";
 
 const featuredProjects = [
   {
@@ -36,50 +28,8 @@ const featuredProjects = [
   },
 ];
 
-function useTheme() {
-  const [isLight, setIsLight] = useState(() => {
-    if (typeof document === "undefined") return false;
-    return document.documentElement.classList.contains("theme-light");
-  });
-
-  useEffect(() => {
-    const observer = new MutationObserver(() => {
-      setIsLight(document.documentElement.classList.contains("theme-light"));
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  return isLight;
-}
-
 export default function Home() {
   const [expandedProject, setExpandedProject] = useState<string | null>(null);
-  const isLightTheme = useTheme();
-
-  const statCards = [
-    {
-      label: "Security tools",
-      image: isLightTheme ? securityToolsLightImage : securityToolsImage,
-    },
-    {
-      label: "Case studies",
-      image: isLightTheme ? caseStudiesLightImage : caseStudiesImage,
-    },
-    {
-      label: "Security checklists",
-      image: isLightTheme ? securityChecklistsLightImage : securityChecklistsImage,
-    },
-    {
-      label: "Custom scripts",
-      image: isLightTheme ? customScriptsLightImage : customScriptsImage,
-    },
-  ];
 
   return (
     <div className="space-y-16">
@@ -132,46 +82,26 @@ export default function Home() {
               <span>48 hrs</span>
             </div>
           </div>
-          <div className="space-y-6">
-            <div className="frosted-card rounded-3xl p-6 text-center sm:text-left">
-              <h2 className="font-orbitron text-2xl font-bold tracking-[0.14em] text-[color:var(--text-strong)] sm:text-3xl">
-                Need a secure website?
-              </h2>
-              <p className="mt-4 font-orbitron text-base tracking-[0.08em] text-[color:var(--text-soft)] sm:text-lg">
-                <Link
-                  to="/contact"
-                  className="text-[color:var(--accent)] underline decoration-transparent underline-offset-4 transition hover:decoration-[color:var(--accent)]"
-                >
-                  Contact
-                </Link>{" "}
-                me with your preferred website design, or{" "}
-                <Link
-                  to="/design-hub?service=custom-web-page-design"
-                  className="text-[color:var(--accent)] underline decoration-transparent underline-offset-4 transition hover:decoration-[color:var(--accent)]"
-                >
-                  design your own
-                </Link>
-                .
-              </p>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {statCards.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="frosted-card flex min-h-[160px] flex-col items-center justify-between rounded-xl p-4 text-center"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--text-strong)]">
-                    {stat.label}
-                  </p>
-                  <img
-                    src={stat.image}
-                    alt={`${stat.label} illustration`}
-                    className="mt-4 h-20 w-20 rounded-xl object-contain sm:h-24 sm:w-24"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-            </div>
+          <div className="frosted-card rounded-3xl p-6 text-center sm:text-left">
+            <h2 className="font-orbitron text-2xl font-bold tracking-[0.14em] text-[color:var(--text-strong)] sm:text-3xl">
+              Need a secure website?
+            </h2>
+            <p className="mt-4 font-orbitron text-base tracking-[0.08em] text-[color:var(--text-soft)] sm:text-lg">
+              <Link
+                to="/contact"
+                className="text-[color:var(--accent)] underline decoration-transparent underline-offset-4 transition hover:decoration-[color:var(--accent)]"
+              >
+                Contact
+              </Link>{" "}
+              me with your preferred website design, or{" "}
+              <Link
+                to="/design-hub?service=custom-web-page-design"
+                className="text-[color:var(--accent)] underline decoration-transparent underline-offset-4 transition hover:decoration-[color:var(--accent)]"
+              >
+                design your own
+              </Link>
+              .
+            </p>
           </div>
         </div>
       </section>

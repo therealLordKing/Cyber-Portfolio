@@ -1,8 +1,8 @@
 import TemplateShell from "../../components/TemplateShell";
 
-export default function EcommerceStorefront() {
+export default function OnlineStorefront() {
   return (
-    <TemplateShell title="Ecommerce storefront">
+    <TemplateShell title="Online storefront">
       <div className="grid gap-6">
         <div className="frosted-panel template-panel rounded-[32px] p-6 sm:p-8">
           <div className="flex items-center justify-between text-[11px] font-semibold uppercase tracking-[0.32em] text-[color:var(--text-muted)]">

@@ -1,22 +1,21 @@
 import { useEffect, useState } from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import CyberPortfolio from "./pages/CyberPortfolio";
 import Home from "./pages/Home";
-import Projects from "./pages/Projects";
+import CustomScripts from "./pages/CustomScripts";
+import SecurityTools from "./pages/SecurityTools";
+import CaseStudies from "./pages/CaseStudies";
+import MyPlaybooks from "./pages/MyPlaybooks";
+import IndustryStandards from "./pages/IndustryStandards";
+import VulnerableWebAppLab from "./pages/VulnerableWebAppLab";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import WebsiteDesigns from "./pages/WebsiteDesigns";
 import DesignHub from "./pages/DesignHub";
 import Thanks from "./pages/Thanks";
 import OnePageBrandSite from "./pages/templates/OnePageBrandSite";
-import PortfolioGrid from "./pages/templates/PortfolioGrid";
 import ServiceStudio from "./pages/templates/ServiceStudio";
-import ProductRelease from "./pages/templates/ProductRelease";
-import ContentHub from "./pages/templates/ContentHub";
-import ComingSoon from "./pages/templates/ComingSoon";
-import StartupSaaS from "./pages/templates/StartupSaaS";
-import EcommerceStorefront from "./pages/templates/EcommerceStorefront";
+import OnlineStorefront from "./pages/templates/OnlineStorefront";
 import EventLanding from "./pages/templates/EventLanding";
 import {
   TemplateStyleContext,
@@ -69,47 +68,32 @@ export default function App() {
               />
               <main className="relative mx-auto max-w-6xl px-5 pb-16 pt-12 sm:px-8 lg:px-12">
                 <Routes>
+                  {/* Main pages */}
                   <Route path="/" element={<Home />} />
-                  <Route path="/cyber-portfolio" element={<CyberPortfolio />} />
-                  <Route path="/projects" element={<Projects />} />
+
+                  {/* Cyber Solutions */}
+                  <Route path="/cyber-solutions/custom-scripts" element={<CustomScripts />} />
+                  <Route path="/cyber-solutions/security-tools" element={<SecurityTools />} />
+
+                  {/* Home Labs */}
+                  <Route path="/home-labs/vulnerable-web-app" element={<VulnerableWebAppLab />} />
+
+                  {/* Case Studies */}
+                  <Route path="/case-studies" element={<CaseStudies />} />
+
+                  {/* Response Playbooks */}
+                  <Route path="/playbooks/my-playbooks" element={<MyPlaybooks />} />
+                  <Route path="/playbooks/industry-standards" element={<IndustryStandards />} />
+
+                  {/* Website Designs */}
                   <Route path="/website-designs" element={<WebsiteDesigns />} />
                   <Route path="/design-hub" element={<DesignHub />} />
-                  <Route
-                    path="/website-designs/one-page-brand-site"
-                    element={<OnePageBrandSite />}
-                  />
-                  <Route
-                    path="/website-designs/portfolio-grid"
-                    element={<PortfolioGrid />}
-                  />
-                  <Route
-                    path="/website-designs/service-studio"
-                    element={<ServiceStudio />}
-                  />
-                  <Route
-                    path="/website-designs/product-release"
-                    element={<ProductRelease />}
-                  />
-                  <Route
-                    path="/website-designs/content-hub"
-                    element={<ContentHub />}
-                  />
-                  <Route
-                    path="/website-designs/startup-saas"
-                    element={<StartupSaaS />}
-                  />
-                  <Route
-                    path="/website-designs/ecommerce-storefront"
-                    element={<EcommerceStorefront />}
-                  />
-                  <Route
-                    path="/website-designs/event-landing"
-                    element={<EventLanding />}
-                  />
-                  <Route
-                    path="/website-designs/coming-soon"
-                    element={<ComingSoon />}
-                  />
+                  <Route path="/website-designs/one-page-brand-site" element={<OnePageBrandSite />} />
+                  <Route path="/website-designs/service-studio" element={<ServiceStudio />} />
+                  <Route path="/website-designs/online-storefront" element={<OnlineStorefront />} />
+                  <Route path="/website-designs/event-landing" element={<EventLanding />} />
+
+                  {/* Other pages */}
                   <Route path="/about" element={<About />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/thanks" element={<Thanks />} />
