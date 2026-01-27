@@ -30,10 +30,7 @@ const designs = [
 export default function WebsiteDesigns() {
   return (
     <section className="space-y-10">
-      <header className="space-y-4 text-center sm:text-left">
-        <p className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
-          Template Library
-        </p>
+      <header className="space-y-4 text-left">
         <h1 className="font-orbitron text-3xl font-semibold tracking-tight text-[color:var(--text-strong)] sm:text-4xl">
           Website Designs
         </h1>
@@ -43,12 +40,6 @@ export default function WebsiteDesigns() {
       </header>
 
       <div className="frosted-panel rounded-[32px] p-6 sm:p-8">
-        <div className="mb-8">
-          <p className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
-            One page designs
-          </p>
-        </div>
-
         <div className="grid gap-4 sm:grid-cols-2">
           {designs.map((design) => (
             <Link

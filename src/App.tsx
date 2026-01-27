@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import backdrop from "./assets/images/home/backdrop.jpg";
+import navbarBg from "./assets/images/home/Matching Pc Wallpapers.gif";
 import Home from "./pages/Home";
 import CustomScripts from "./pages/CustomScripts";
 import SecurityTools from "./pages/SecurityTools";
@@ -23,13 +25,6 @@ import {
 } from "./context/TemplateStyleContext";
 
 export default function App() {
-  const [theme, setTheme] = useState<"dark" | "light">(() => {
-    if (typeof window === "undefined") {
-      return "light";
-    }
-    const saved = window.localStorage.getItem("theme");
-    return saved === "dark" ? "dark" : "light";
-  });
   const [templateStyle, setTemplateStyle] = useState<TemplateStyle>(() => {
     if (typeof window === "undefined") {
       return "glass";
@@ -42,11 +37,6 @@ export default function App() {
   });
 
   useEffect(() => {
-    document.documentElement.classList.toggle("theme-light", theme === "light");
-    window.localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  useEffect(() => {
     document.documentElement.dataset.templateStyle = templateStyle;
     window.localStorage.setItem("templateStyle", templateStyle);
   }, [templateStyle]);
@@ -56,50 +46,85 @@ export default function App() {
       value={{ style: templateStyle, setStyle: setTemplateStyle }}
     >
       <HashRouter>
-        <div className="app-shell min-h-screen text-[color:var(--text)]">
-          <div className="bg-grid">
-            <div className="relative">
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--accent-soft),_transparent_55%)]" />
-              <Navbar
-                theme={theme}
-                onToggleTheme={() =>
-                  setTheme((prev) => (prev === "dark" ? "light" : "dark"))
-                }
-              />
-              <main className="relative mx-auto max-w-6xl px-5 pb-16 pt-12 sm:px-8 lg:px-12">
-                <Routes>
-                  {/* Main pages */}
-                  <Route path="/" element={<Home />} />
+        <div className="app-shell relative min-h-screen text-[color:var(--text)]">
+          <div className="relative grid min-h-screen grid-cols-1 lg:grid-cols-[1fr_4fr_1fr]">
+            {/* Left sidebar — blank */}
+            <aside className="sticky top-0 hidden h-screen border-r border-[color:var(--border)] bg-[color:var(--bg)] lg:block">
+              <div className="flex h-full flex-col items-center justify-start gap-4 p-4 pt-8">
+                <p className="font-plex-mono text-[10px] uppercase tracking-[0.3em] text-[color:var(--text-muted)]">
+                  Links
+                </p>
+              </div>
+            </aside>
 
-                  {/* Cyber Solutions */}
-                  <Route path="/cyber-solutions/custom-scripts" element={<CustomScripts />} />
-                  <Route path="/cyber-solutions/security-tools" element={<SecurityTools />} />
+            {/* Main content column */}
+            <div className="relative flex flex-col lg:border-x lg:border-[color:var(--border)]">
+              {/* Navbar with gif behind it */}
+              <div className="relative">
+                <img
+                  src={navbarBg}
+                  alt=""
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-20"
+                />
+                <Navbar />
+              </div>
 
-                  {/* Home Labs */}
-                  <Route path="/home-labs/vulnerable-web-app" element={<VulnerableWebAppLab />} />
+              {/* Page content with backdrop pattern */}
+              <main className="relative flex-1">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 opacity-15"
+                  style={{
+                    backgroundImage: `url(${backdrop})`,
+                    backgroundSize: "400px",
+                    backgroundRepeat: "repeat",
+                  }}
+                />
+                <div className="relative mx-auto max-w-5xl px-5 pb-16 pt-12 sm:px-8 lg:px-10">
+                  <Routes>
+                    {/* Main pages */}
+                    <Route path="/" element={<Home />} />
 
-                  {/* Case Studies */}
-                  <Route path="/case-studies" element={<CaseStudies />} />
+                    {/* Cyber Solutions */}
+                    <Route path="/cyber-solutions/custom-scripts" element={<CustomScripts />} />
+                    <Route path="/cyber-solutions/security-tools" element={<SecurityTools />} />
 
-                  {/* Response Playbooks */}
-                  <Route path="/playbooks/my-playbooks" element={<MyPlaybooks />} />
-                  <Route path="/playbooks/industry-standards" element={<IndustryStandards />} />
+                    {/* Home Labs */}
+                    <Route path="/home-labs/vulnerable-web-app" element={<VulnerableWebAppLab />} />
 
-                  {/* Website Designs */}
-                  <Route path="/website-designs" element={<WebsiteDesigns />} />
-                  <Route path="/design-hub" element={<DesignHub />} />
-                  <Route path="/website-designs/one-page-brand-site" element={<OnePageBrandSite />} />
-                  <Route path="/website-designs/service-studio" element={<ServiceStudio />} />
-                  <Route path="/website-designs/online-storefront" element={<OnlineStorefront />} />
-                  <Route path="/website-designs/event-landing" element={<EventLanding />} />
+                    {/* Case Studies */}
+                    <Route path="/case-studies" element={<CaseStudies />} />
 
-                  {/* Other pages */}
-                  <Route path="/about" element={<About />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/thanks" element={<Thanks />} />
-                </Routes>
+                    {/* Response Playbooks */}
+                    <Route path="/playbooks/my-playbooks" element={<MyPlaybooks />} />
+                    <Route path="/playbooks/industry-standards" element={<IndustryStandards />} />
+
+                    {/* Website Designs */}
+                    <Route path="/website-designs" element={<WebsiteDesigns />} />
+                    <Route path="/design-hub" element={<DesignHub />} />
+                    <Route path="/website-designs/one-page-brand-site" element={<OnePageBrandSite />} />
+                    <Route path="/website-designs/service-studio" element={<ServiceStudio />} />
+                    <Route path="/website-designs/online-storefront" element={<OnlineStorefront />} />
+                    <Route path="/website-designs/event-landing" element={<EventLanding />} />
+
+                    {/* Other pages */}
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/thanks" element={<Thanks />} />
+                  </Routes>
+                </div>
               </main>
             </div>
+
+            {/* Right sidebar — blank */}
+            <aside className="sticky top-0 hidden h-screen border-l border-[color:var(--border)] bg-[color:var(--bg)] lg:block">
+              <div className="flex h-full flex-col items-center justify-start gap-4 p-4 pt-8">
+                <p className="font-plex-mono text-[10px] uppercase tracking-[0.3em] text-[color:var(--text-muted)]">
+                  Banners
+                </p>
+              </div>
+            </aside>
           </div>
         </div>
       </HashRouter>

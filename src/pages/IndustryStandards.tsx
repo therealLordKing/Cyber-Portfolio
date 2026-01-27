@@ -1,7 +1,7 @@
 export default function IndustryStandards() {
   return (
     <section className="space-y-8">
-      <header className="text-center">
+      <header className="text-left">
         <h1 className="font-orbitron text-3xl font-semibold tracking-wide text-[color:var(--text-strong)] sm:text-4xl">
           Industry Standard Links
         </h1>

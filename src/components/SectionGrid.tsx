@@ -123,10 +123,7 @@ export default function SectionGrid({
             : ""
         }`}
       >
-        <div className="space-y-4 text-center sm:text-left">
-          <p className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
-            {eyebrow}
-          </p>
+        <div className="space-y-4 text-left">
           <h1 className="font-orbitron text-3xl font-semibold tracking-tight text-[color:var(--text-strong)] sm:text-4xl">
             {title}
           </h1>
@@ -163,10 +160,7 @@ export default function SectionGrid({
       <div className="frosted-panel rounded-[32px] p-6 sm:p-8">
         <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
           <div>
-            <p className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
-              {eyebrow}
-            </p>
-            <h3 className="mt-2 font-orbitron text-2xl font-semibold text-[color:var(--text-strong)]">
+            <h3 className="font-orbitron text-2xl font-semibold text-[color:var(--text-strong)]">
               {sectionTitle}
             </h3>
           </div>

@@ -39,11 +39,8 @@ export default function DesignHub() {
 
   return (
     <section className="space-y-10">
-      <div className="frosted-panel rounded-[32px] p-6 text-center sm:p-8 sm:text-left">
-        <p className="font-plex-mono text-xs uppercase tracking-[0.35em] text-[color:var(--text-muted)]">
-          Website designs
-        </p>
-        <h1 className="mt-3 font-orbitron text-3xl font-semibold tracking-tight text-[color:var(--text-strong)] sm:text-4xl">
+      <div className="frosted-panel rounded-[32px] p-6 text-left sm:p-8">
+        <h1 className="font-orbitron text-3xl font-semibold tracking-tight text-[color:var(--text-strong)] sm:text-4xl">
           Design hub
         </h1>
         <p className="mt-3 max-w-2xl text-base text-[color:var(--text-soft)]">

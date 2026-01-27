@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import SectionGrid from "../components/SectionGrid";
 
 export default function Contact() {
   const [searchParams] = useSearchParams();
@@ -29,25 +28,26 @@ export default function Contact() {
   };
 
   return (
-    <>
-      <SectionGrid
-        title="Contact"
-        description="Reach out for collaborations, security reviews, or website projects."
-        eyebrow="Contact"
-        sectionTitle="Ways to connect"
-        badge="My socials will be up soon, for now fill out your details below and I will return your enquiry."
-        showFocusCard={false}
-        itemVariant="compact"
-        items={[
+    <section className="space-y-10">
+      <header className="space-y-4 text-left">
+        <h1 className="font-orbitron text-3xl font-semibold tracking-tight text-[color:var(--text-strong)] sm:text-4xl">
+          Contact
+        </h1>
+        <p className="max-w-2xl text-base leading-relaxed text-[color:var(--text)]">
+          Reach out for collaborations, security reviews, or website projects.
+          My socials will be up soon — for now fill out your details below and
+          I will return your enquiry.
+        </p>
+      </header>
+
+      {/* Socials */}
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        {[
           {
-            title: "YouTube",
-            description: "",
+            label: "YouTube",
             icon: (
               <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
-                <path
-                  d="M10 15l5-3-5-3v6Z"
-                  fill="currentColor"
-                />
+                <path d="M10 15l5-3-5-3v6Z" fill="currentColor" />
                 <path
                   d="M21.2 8.6a2.8 2.8 0 0 0-2-2C17.5 6 12 6 12 6s-5.5 0-7.2.6a2.8 2.8 0 0 0-2 2A29 29 0 0 0 2.5 12a29 29 0 0 0 .3 3.4 2.8 2.8 0 0 0 2 2c1.7.6 7.2.6 7.2.6s5.5 0 7.2-.6a2.8 2.8 0 0 0 2-2A29 29 0 0 0 21.5 12a29 29 0 0 0-.3-3.4Z"
                   fill="none"
@@ -58,8 +58,7 @@ export default function Contact() {
             ),
           },
           {
-            title: "GitHub",
-            description: "",
+            label: "GitHub",
             icon: (
               <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
                 <path
@@ -70,8 +69,7 @@ export default function Contact() {
             ),
           },
           {
-            title: "X",
-            description: "",
+            label: "X",
             icon: (
               <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
                 <path
@@ -82,8 +80,7 @@ export default function Contact() {
             ),
           },
           {
-            title: "Instagram",
-            description: "",
+            label: "Instagram",
             icon: (
               <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
                 <path
@@ -98,32 +95,7 @@ export default function Contact() {
             ),
           },
           {
-            title: "Email",
-            description: "",
-            content: (
-              <div className="space-y-3">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--text-muted)]">
-                  <span className="block max-w-full break-all text-[11px] tracking-[0.18em]">
-                    {emailAddress}
-                  </span>
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  <a
-                    href={`mailto:${emailAddress}`}
-                    className="inline-flex items-center justify-center rounded-none border border-[color:var(--accent)] bg-[color:var(--surface-2)] px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--accent)] transition hover:bg-[color:var(--surface-3)] hover:text-[color:var(--text-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
-                  >
-                    Email me
-                  </a>
-                  <button
-                    type="button"
-                    onClick={handleCopyEmail}
-                    className="inline-flex items-center justify-center rounded-none border border-[color:var(--border-strong)] bg-transparent px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--text-soft)] transition hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
-                  >
-                    {emailCopied ? "Copied" : "Copy email"}
-                  </button>
-                </div>
-              </div>
-            ),
+            label: "Email",
             icon: (
               <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
                 <path
@@ -141,140 +113,174 @@ export default function Contact() {
               </svg>
             ),
           },
-        ]}
-      />
-      <section className="frosted-panel mt-12 rounded-[32px] p-6 sm:p-8">
-        <div className="space-y-6">
-          <div className="space-y-2">
-            <h2 className="font-orbitron text-2xl font-semibold text-[color:var(--text-strong)]">
-              Tell me about your project
-            </h2>
-          </div>
-          <form
-            className="grid gap-5"
-            name="contact"
-            method="post"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
-            action="/thanks"
+        ].map((social) => (
+          <div
+            key={social.label}
+            className="frosted-card flex flex-col items-center gap-2 rounded-xl p-4 text-[color:var(--text-muted)]"
           >
-            <input type="hidden" name="form-name" value="contact" />
-            <p className="hidden">
-              <label>
-                Don't fill this out: <input name="bot-field" />
-              </label>
-            </p>
-            <label className="space-y-2 text-sm text-[color:var(--text-soft)]">
-              <span>What is your name?</span>
-              <input
-                type="text"
-                name="name"
-                className="form-input"
-                placeholder="Your name"
-              />
-            </label>
+            {social.icon}
+            <span className="text-xs font-semibold uppercase tracking-[0.18em]">
+              {social.label}
+            </span>
+          </div>
+        ))}
+      </div>
 
-            <label className="space-y-2 text-sm text-[color:var(--text-soft)]">
-              <span>What is your email?</span>
-              <input
-                type="email"
-                name="email"
-                className="form-input"
-                placeholder="you@email.com"
-              />
-            </label>
-
-            <fieldset className="space-y-3">
-              <legend className="text-sm text-[color:var(--text-soft)]">
-                Do you currently have a website?
-              </legend>
-              <div className="flex flex-wrap gap-4">
-                {[
-                  { value: "yes", label: "Yes" },
-                  { value: "no", label: "No" },
-                ].map((option) => (
-                  <label
-                    key={option.value}
-                    className={`flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] ${
-                      hasWebsite === option.value
-                        ? "border-[color:var(--accent)] text-[color:var(--text-strong)]"
-                        : "border-[color:var(--border)] text-[color:var(--text-muted)]"
-                    }`}
-                  >
-                    <input
-                      type="radio"
-                      name="has-website"
-                      value={option.value}
-                      checked={hasWebsite === option.value}
-                      onChange={() =>
-                        setHasWebsite(option.value as "yes" | "no")
-                      }
-                      className="sr-only"
-                    />
-                    {option.label}
-                  </label>
-                ))}
-              </div>
-            </fieldset>
-
-            <label className="space-y-2 text-sm text-[color:var(--text-soft)]">
-              <span>What is the url of your website</span>
-              <input
-                type="url"
-                name="website"
-                className="form-input"
-                placeholder="https://example.com"
-                disabled={hasWebsite === "no"}
-              />
-            </label>
-
-            <label className="space-y-2 text-sm text-[color:var(--text-soft)]">
-              <span>What do you need?</span>
-              <select
-                name="service"
-                className="form-select"
-                value={serviceNeed}
-                onChange={(event) => setServiceNeed(event.target.value)}
-              >
-                <option value="" disabled>
-                  Select one
-                </option>
-                <option value="website-design">Website design</option>
-                <option value="custom-web-page-design">
-                  Custom web page design
-                </option>
-                <option value="website-security-testing">
-                  Website security testing
-                </option>
-                <option value="custom-tool">
-                  Assistance with a custom tool/script
-                </option>
-                <option value="something-else">Something else</option>
-                <option value="not-sure">
-                  Not sure? (Don't worry, explain the best you can)
-                </option>
-              </select>
-            </label>
-            {showMessageField ? (
-              <label className="space-y-2 text-sm text-[color:var(--text-soft)]">
-                <span>{messagePrompt}</span>
-                <textarea
-                  name="message"
-                  rows={4}
-                  className="form-textarea"
-                  placeholder="Share any goals, ideas, or constraints."
-                />
-              </label>
-            ) : null}
-            <button
-              type="submit"
-              className="w-full rounded-full bg-[color:var(--accent)] px-6 py-3 text-sm font-semibold text-[color:var(--text-strong)] transition hover:bg-[color:var(--accent-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--bg)] sm:w-fit"
-            >
-              Send request
-            </button>
-          </form>
+      {/* Email shortcut */}
+      <div className="frosted-card flex flex-col items-start gap-3 rounded-xl p-5 sm:flex-row sm:items-center sm:justify-between">
+        <span className="text-sm text-[color:var(--text-soft)] break-all">
+          {emailAddress}
+        </span>
+        <div className="flex gap-2">
+          <a
+            href={`mailto:${emailAddress}`}
+            className="rounded-full bg-[color:var(--accent)] px-4 py-2 text-xs font-semibold text-[color:var(--text-strong)] transition hover:bg-[color:var(--accent-strong)]"
+          >
+            Email me
+          </a>
+          <button
+            type="button"
+            onClick={handleCopyEmail}
+            className="rounded-full border border-[color:var(--border)] px-4 py-2 text-xs font-semibold text-[color:var(--text-muted)] transition hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]"
+          >
+            {emailCopied ? "Copied" : "Copy"}
+          </button>
         </div>
-      </section>
-    </>
+      </div>
+
+      {/* Form */}
+      <div className="frosted-card rounded-2xl p-6 sm:p-8">
+        <h2 className="font-orbitron text-xl font-semibold text-[color:var(--text-strong)] sm:text-2xl">
+          Tell me about your project
+        </h2>
+
+        <form
+          className="mt-6 grid gap-5"
+          name="contact"
+          method="post"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          action="/thanks"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <p className="hidden">
+            <label>
+              Don't fill this out: <input name="bot-field" />
+            </label>
+          </p>
+
+          <label className="space-y-2 text-sm text-[color:var(--text-soft)]">
+            <span>What is your name?</span>
+            <input
+              type="text"
+              name="name"
+              className="form-input"
+              placeholder="Your name"
+            />
+          </label>
+
+          <label className="space-y-2 text-sm text-[color:var(--text-soft)]">
+            <span>What is your email?</span>
+            <input
+              type="email"
+              name="email"
+              className="form-input"
+              placeholder="you@email.com"
+            />
+          </label>
+
+          <fieldset className="space-y-3">
+            <legend className="text-sm text-[color:var(--text-soft)]">
+              Do you currently have a website?
+            </legend>
+            <div className="flex flex-wrap gap-3">
+              {[
+                { value: "yes", label: "Yes" },
+                { value: "no", label: "No" },
+              ].map((option) => (
+                <label
+                  key={option.value}
+                  className={`flex cursor-pointer items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] transition ${
+                    hasWebsite === option.value
+                      ? "border-[color:var(--accent)] text-[color:var(--text-strong)]"
+                      : "border-[color:var(--border)] text-[color:var(--text-muted)] hover:border-[color:var(--border-strong)]"
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    name="has-website"
+                    value={option.value}
+                    checked={hasWebsite === option.value}
+                    onChange={() =>
+                      setHasWebsite(option.value as "yes" | "no")
+                    }
+                    className="sr-only"
+                  />
+                  {option.label}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <label className="space-y-2 text-sm text-[color:var(--text-soft)]">
+            <span>What is the URL of your website?</span>
+            <input
+              type="url"
+              name="website"
+              className="form-input"
+              placeholder="https://example.com"
+              disabled={hasWebsite === "no"}
+            />
+          </label>
+
+          <label className="space-y-2 text-sm text-[color:var(--text-soft)]">
+            <span>What do you need?</span>
+            <select
+              name="service"
+              className="form-select"
+              value={serviceNeed}
+              onChange={(event) => setServiceNeed(event.target.value)}
+            >
+              <option value="" disabled>
+                Select one
+              </option>
+              <option value="website-design">Website design</option>
+              <option value="custom-web-page-design">
+                Custom web page design
+              </option>
+              <option value="website-security-testing">
+                Website security testing
+              </option>
+              <option value="custom-tool">
+                Assistance with a custom tool/script
+              </option>
+              <option value="something-else">Something else</option>
+              <option value="not-sure">
+                Not sure? (Don't worry, explain the best you can)
+              </option>
+            </select>
+          </label>
+
+          {showMessageField ? (
+            <label className="space-y-2 text-sm text-[color:var(--text-soft)]">
+              <span>{messagePrompt}</span>
+              <textarea
+                name="message"
+                rows={4}
+                className="form-textarea"
+                placeholder="Share any goals, ideas, or constraints."
+              />
+            </label>
+          ) : null}
+
+          <button
+            type="submit"
+            className="w-full rounded-full bg-[color:var(--accent)] px-6 py-3 text-sm font-semibold text-[color:var(--text-strong)] transition hover:bg-[color:var(--accent-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--bg)] sm:w-fit"
+          >
+            Send request
+          </button>
+        </form>
+      </div>
+    </section>
   );
 }

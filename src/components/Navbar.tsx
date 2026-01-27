@@ -66,10 +66,6 @@ const navItems: NavItem[] = [
   { to: "/contact", label: "Contact" },
 ];
 
-type NavbarProps = {
-  theme: "dark" | "light";
-  onToggleTheme: () => void;
-};
 
 function DropdownMenu({
   item,
@@ -173,7 +169,7 @@ function DropdownMenu({
   );
 }
 
-export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
+export default function Navbar() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   const handleToggle = (label: string) => {
@@ -185,14 +181,27 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
   };
 
   return (
-    <header className="frosted-panel sticky top-0 z-50">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-5 py-4 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left sm:px-8 lg:px-12">
+    <header className="sticky top-0 z-50 border-b border-[color:var(--border)]">
+      <div className="relative z-10 mx-auto flex flex-col items-center gap-4 px-5 py-6 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left sm:px-8 sm:py-8 lg:px-10">
         <div className="flex flex-col items-center gap-1 sm:items-start">
           <NavLink
             to="/"
             aria-label="Go to home"
+            className="neon-sign-holder relative inline-block"
           >
-            one36ix solutions
+            <span className="cyber-title font-orbitron text-lg font-bold uppercase tracking-[0.18em] sm:text-xl">
+              one36ix studios
+            </span>
+            <span className="cyber-title-frame" aria-hidden="true">
+              <span className="cyber-title-corner cyber-title-corner--tl" />
+              <span className="cyber-title-corner cyber-title-corner--tr" />
+              <span className="cyber-title-corner cyber-title-corner--bl" />
+              <span className="cyber-title-corner cyber-title-corner--br" />
+              <span className="cyber-title-edge cyber-title-edge--top" />
+              <span className="cyber-title-edge cyber-title-edge--bottom" />
+              <span className="cyber-title-edge cyber-title-edge--left" />
+              <span className="cyber-title-edge cyber-title-edge--right" />
+            </span>
           </NavLink>
         </div>
 
@@ -224,39 +233,6 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
               </div>
             ))}
           </div>
-          <button
-            type="button"
-            onClick={onToggleTheme}
-            aria-label={
-              theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
-            }
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--border)] bg-[color:var(--surface-2)] text-[color:var(--text-soft)] transition hover:border-[color:var(--accent)] hover:text-[color:var(--text-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--surface-1)]"
-          >
-            {theme === "dark" ? (
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                className="h-5 w-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-              >
-                <circle cx="12" cy="12" r="4.5" />
-                <path d="M12 3.5v2.2M12 18.3v2.2M4.2 12h2.2M17.6 12h2.2M6.1 6.1l1.6 1.6M16.3 16.3l1.6 1.6M6.1 17.9l1.6-1.6M16.3 7.7l1.6-1.6" />
-              </svg>
-            ) : (
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                className="h-5 w-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-              >
-                <path d="M21 14.5a8.5 8.5 0 0 1-11.5-11 9.5 9.5 0 1 0 11.5 11Z" />
-              </svg>
-            )}
-          </button>
         </nav>
       </div>
     </header>

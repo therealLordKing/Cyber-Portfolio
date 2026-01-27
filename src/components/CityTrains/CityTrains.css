@@ -1,0 +1,98 @@
+.city-trains-wrapper {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.city-trains-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Moving train light streaks */
+.city-train {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 2px;
+}
+
+/* Horizontal trains */
+.city-train--1 {
+  bottom: 38%;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff2d48 40%, #ff6b6b 70%, transparent);
+  box-shadow: 0 0 8px rgba(255, 45, 72, 0.6), 0 0 20px rgba(255, 45, 72, 0.3);
+  animation: train-right 8s linear infinite;
+}
+
+.city-train--2 {
+  bottom: 55%;
+  right: 0;
+  width: 45px;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #ff2d48 40%, #ff8888 70%, transparent);
+  box-shadow: 0 0 8px rgba(255, 45, 72, 0.6), 0 0 20px rgba(255, 45, 72, 0.3);
+  animation: train-left 11s linear infinite;
+  animation-delay: -3s;
+}
+
+.city-train--3 {
+  bottom: 22%;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff4466 40%, #ffaaaa 70%, transparent);
+  box-shadow: 0 0 6px rgba(255, 68, 102, 0.5), 0 0 16px rgba(255, 68, 102, 0.25);
+  animation: train-right 14s linear infinite;
+  animation-delay: -7s;
+}
+
+/* Vertical trains */
+.city-train--4 {
+  top: 0;
+  left: 30%;
+  width: 2px;
+  height: 35px;
+  background: linear-gradient(180deg, transparent, #ff2d48 40%, #ff6b6b 70%, transparent);
+  box-shadow: 0 0 8px rgba(255, 45, 72, 0.5), 0 0 16px rgba(255, 45, 72, 0.25);
+  animation: train-down 10s linear infinite;
+  animation-delay: -2s;
+}
+
+.city-train--5 {
+  bottom: 0;
+  right: 25%;
+  width: 2px;
+  height: 30px;
+  background: linear-gradient(0deg, transparent, #ff4466 40%, #ffaaaa 70%, transparent);
+  box-shadow: 0 0 6px rgba(255, 68, 102, 0.5), 0 0 14px rgba(255, 68, 102, 0.2);
+  animation: train-up 13s linear infinite;
+  animation-delay: -5s;
+}
+
+@keyframes train-right {
+  0% { left: -80px; }
+  100% { left: 110%; }
+}
+
+@keyframes train-left {
+  0% { right: -80px; }
+  100% { right: 110%; }
+}
+
+@keyframes train-down {
+  0% { top: -50px; }
+  100% { top: 110%; }
+}
+
+@keyframes train-up {
+  0% { bottom: -50px; }
+  100% { bottom: 110%; }
+}
