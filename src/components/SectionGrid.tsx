@@ -102,7 +102,6 @@ function CardContent({ item, isCompact, isExpanded, detailsText }: CardContentPr
 export default function SectionGrid({
   title,
   description,
-  eyebrow,
   sectionTitle,
   badge,
   items,
